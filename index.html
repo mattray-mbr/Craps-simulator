@@ -15,9 +15,12 @@
 
 	<div class="container">
 		<div class="row">
+			<h1 class="bank-roll">BankRoll: {{playerTotal}}</h1>
 			<h1 class="text-center">Click on one</h1>
-			<div class="col-xs-1 bet" ng-repeat="options in board" ng-click="bet($index)"></div>
-			
+			<div class="col-xs-1 bet" ng-repeat="options in board" ng-click="bet($index)">{{options}}</div>
+			<h2>dice# {{dice}} = total {{total}}</h2>
+			<h3>bet {{amount}} on {{playerBet}} </h3>
+			<h4>{{winner}} {{winings}}</h4>
 		</div>
 	</div>
 </body>

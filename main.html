@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Casino Craps Simulator</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+	<link rel="stylesheet" href="main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
+	<script src="main.js"></script>
+<body ng-controller="diceController">
+	<h1 class="text-center">Craps game</h1>
+	<h3>BankRoll: {{playerTotal | currency}}</h3>
+	<div class="layout">
+		<div id="pass-top" class="pass" ng-click="passLine()"></div>
+		<div class="box"></div>
+		<div id="pass-bottom" class="pass" ng-click="passLine()"></div>
+	</div>
+	<div class="roll-area">
+		<div class="dice-section">
+			<h4>Dice A: {{die1}}</h4>
+			<h4>Dice B: {{die2}}</h4>
+			<h4>Dice Total: {{total}}</h4>
+			<button class="btn btn-warning" ng-click="diceRoll()">Roll Dice</button>
+		</div>
+	</div>
+</body>
+</html>
