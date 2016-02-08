@@ -8,20 +8,51 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
 	<script src="main.js"></script>
 <body ng-controller="diceController">
-	<h1 class="text-center">Craps game</h1>
-	<h3>BankRoll: {{playerTotal | currency}}</h3>
+	<h2 class="text-center">Craps game</h2>
+	
 	<div class="layout">
-		<div id="pass-top" class="pass" ng-click="passLine()"></div>
-		<div class="box"></div>
-		<div id="pass-bottom" class="pass" ng-click="passLine()"></div>
+		<div id="pass-top" class="box valid" ng-click="passLine()"></div>
+		<div id="pass-bottom" class="box valid" ng-click="passLine()"></div>
+		<div id="dont-pass-bottom" class="box valid"></div>
+		<div id="dont-pass-top" class="box valid"></div>
+		<div id="field" class="box valid"></div>
+		<div id="come" class="box invalid"></div>
+		<div id="dont-come" class="box invalid place"></div>
+		<div id="four"  class="box invalid place"></div>
+		<div id="five" class="box invalid place"></div>
+		<div id="six" class="box invalid place"></div>
+		<div id="eight" class="box invalid place"></div>
+		<div id="nine" class="box invalid place"></div>
+		<div id="ten" class="box invalid place"></div>
+		<div id="any-seven" class="box valid"></div>
+		<div id="hard-4" class="box invalid"></div>
+		<div id="hard-6" class="box invalid"></div>
+		<div id="hard-8" class="box invalid"></div>
+		<div id="hard-10" class="box invalid"></div>
+		<div id="three" class="box valid"></div>
+		<div id="eleven" class="box valid"></div>
+		<div id="two" class="box valid"></div>
+		<div id="twelve" class="box valid"></div>
+		<div id="craps" class="box valid"></div>
+
 	</div>
-	<div class="roll-area">
-		<div class="dice-section">
+	<div class="roll-area container-fluid">
+	<div class="row">
+		<div class="ui money col-xs-4">
+			<h3>Player Total: {{playerTotal | currency}}</h3>
+			<h3>Total bet: </h3>
+			<h3>Win/lose amount: </h3>
+		</div>
+		<div class="ui dice col-xs-4">
 			<h4>Dice A: {{die1}}</h4>
 			<h4>Dice B: {{die2}}</h4>
 			<h4>Dice Total: {{total}}</h4>
-			<button class="btn btn-warning" ng-click="diceRoll()">Roll Dice</button>
+			<button class="roll btn btn-warning" ng-click="diceRoll()">Roll Dice</button>
 		</div>
-	</div>
+		<div class="ui other col-xs-4">
+			<h3>other stats</h3>
+		</div>
+	</div> <!-- row -->
+	</div> <!-- container -->
 </body>
 </html>
