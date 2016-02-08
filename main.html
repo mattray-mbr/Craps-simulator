@@ -11,12 +11,15 @@
 	<h2 class="text-center">Craps game</h2>
 	
 	<div class="layout">
-		<div id="pass-top" class="box valid" ng-click="passLine()"></div>
-		<div id="pass-bottom" class="box valid" ng-click="passLine()"></div>
+		<div id="pass-top" class="pass box valid">
+			<div class="circle pass-bet" ng-click="passLine()">BET</div><input type="text" ng-show="passInput" ng-model="passAmount">
+		</div>
+		<div id="pass-bottom" class="pass box valid" ng-click="passLine()"></div>
 		<div id="dont-pass-bottom" class="box valid" ng-click="dontPass()"></div>
 		<div id="dont-pass-top" class="box valid" ng-click="dontPass()"></div>
-		<div id="field" class="box valid" ng-click="field()">
+		<div id="field" class="box valid">
 			<input id="fieldInput" type="text" placeholder="set bet amount" ng-show="fieldInput" ng-model="fieldAmount">
+			<div class="circle field-bet" ng-click="field()">Bet</div>
 		</div>
 		<div id="come" class="box invalid"></div>
 		<div id="dont-come" class="box invalid place"></div>

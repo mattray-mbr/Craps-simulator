@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Casino Craps Simulator</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+	<link rel="stylesheet" href="main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
+	<script src="main.js"></script>
+<body ng-controller="diceController">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-2 square placeT"></div>
+			<div class="col-xs-1 square placeT">dc</div>
+			<div class="col-xs-8 square placeT">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-2 square placeT">4</div>
+						<div class="col-xs-2 square placeT">5</div>
+						<div class="col-xs-2 square placeT">6</div>
+						<div class="col-xs-2 square placeT">8</div>
+						<div class="col-xs-2 square placeT">9</div>
+						<div class="col-xs-2 square placeT">10</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 square placeT"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 square placeB">6&8</div>
+			<div class="col-xs-1 square placeB">dc</div>
+			<div class="col-xs-8 square placeB">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-2 square placeA">4</div>
+						<div class="col-xs-2 square placeA">5</div>
+						<div class="col-xs-2 square placeA">6</div>
+						<div class="col-xs-2 square placeA">8</div>
+						<div class="col-xs-2 square placeA">9</div>
+						<div class="col-xs-2 square placeA">10</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-2 square placeT">4</div>
+						<div class="col-xs-2 square placeT">5</div>
+						<div class="col-xs-2 square placeT">6</div>
+						<div class="col-xs-2 square placeT">8</div>
+						<div class="col-xs-2 square placeT">9</div>
+						<div class="col-xs-2 square placeT">10</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-2 square placeA">4</div>
+						<div class="col-xs-2 square placeA">5</div>
+						<div class="col-xs-2 square placeA">6</div>
+						<div class="col-xs-2 square placeA">8</div>
+						<div class="col-xs-2 square placeA">9</div>
+						<div class="col-xs-2 square placeA">10</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 square placeB"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 square allB">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-2 square placeD"></div>
+						<div class="col-xs-4 square placeD"></div>
+						<div class="col-xs-2 square placeD"></div>
+						<div class="col-xs-4 square placeD"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 square allB">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 square placeM">come</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 square placeM">field</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 square placeF">dont pass</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 square placeG">odds</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 square placeF">pass</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 square placeG">odds</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 square allB">
+				<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+								</div>
+							</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

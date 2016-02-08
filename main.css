@@ -18,23 +18,29 @@ h3 {
 .box {
 	position: absolute;
 }
-.pass {
-	background-color: rgba(0,250,0,.5);
-	position: absolute;
+.circle {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #916;
+}
+.pass:hover {
+	background-color:rgba(50,204,51, .7);
+}
+.pass:hover #pass-bottom{
+	background-color:rgba(50,204,51, .7);
 }
 #pass-bottom {
 	width: 710px;
 	height: 40px;
 	top: 572px;
 	left: 70px;
-	background-color:rgba(50,204,51, .7) ;
 }
 #pass-top {
 	width: 40px;
 	height: 432px;
 	top: 140px;
 	left:70px;
-	background-color:rgba(50,204,51, .7) ;
 }
 #dont-pass-bottom {
 	width: 655px;
@@ -95,27 +101,6 @@ h3 {
 #ten {
 	left: 900px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .roll-area {
 	border:1px solid black;
 	background-color: teal;
@@ -132,3 +117,63 @@ h3 {
 .other {
 	background-color: #9fe;
 }
+/* --------------- layout test -----------------*/
+.square {
+	border: 1px solid black;
+	padding: 0;
+}
+.placeT {
+	height: 50px;
+}
+.placeB {
+	height: 100px;
+}
+.placeA {
+	height: 25px;
+}
+.allB {
+	height: 400px;
+}
+.placeD {
+	height: 300px;
+}
+.propsA {
+	height: 100px;
+}
+.placeM {
+	height: 150px;
+}
+.placeF {
+	height: 30px;
+}
+.placeG {
+	height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
