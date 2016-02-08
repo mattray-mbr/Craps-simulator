@@ -5,6 +5,11 @@ h3 {
 	margin: 0;
 	margin-bottom: 20px;
 }
+button {
+	list-style: none;
+	background-color: #fff;
+	border: none;
+}
 .layout {
 	width: 1075px;
 	background-image: url('table-layout.jpg');
@@ -22,12 +27,16 @@ h3 {
 	width: 40px;
 	height: 40px;
 	border-radius: 20px;
-	background-color: #916;
+	background-color: #ebe;
+	float: right;
 }
-.pass:hover {
+.invalid {
+	background-color: rgba(255, 51,51, .6);
+}
+.valid:hover {
 	background-color:rgba(50,204,51, .7);
 }
-.pass:hover #pass-bottom{
+.valid:hover #pass-bottom{
 	background-color:rgba(50,204,51, .7);
 }
 #pass-bottom {
@@ -118,6 +127,11 @@ h3 {
 	background-color: #9fe;
 }
 /* --------------- layout test -----------------*/
+.overall-container {
+	/*background-image: url('table-layout.jpg');*/
+	background-size:100% auto;
+	background-repeat: no-repeat;
+}
 .square {
 	border: 1px solid black;
 	padding: 0;

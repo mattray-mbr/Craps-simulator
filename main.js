@@ -7,6 +7,22 @@ var app = angular.module('myApp', [])
 	$scope.die2
 	$scope.winings = 0
 	$scope.outCome
+	$scope.point = ''
+	$scope.comePoint = ''
+	$scope.comeout = true
+	$scope.pointSet = false
+
+ 	function gameState(){
+ 		if($scope.point !== ''){
+ 			$scope.comeout = false
+ 			$scope.pointSet = true
+ 		} else {
+ 			$scope.comeout = true
+ 			$scope.pointSet = false
+ 		}
+ 	}
+
+
 
 //main go function when dice rolls
 	$scope.diceRoll = function(){
@@ -23,29 +39,47 @@ var app = angular.module('myApp', [])
 		if($scope.fieldAmount > 0) {
 			field()
 		}
-		$scope.passAmount = 0
-		$scope.dontPassAmount = 0
-		$scope.fieldAmount = 0
+		if($scope.point === ''){
+			if($scope.total === 4 || $scope.total === 5 || $scope.total === 6 || $scope.total === 8 || $scope.total === 9 || $scope.total === 10){
+				$scope.point = $scope.total
+			}
+		} else if ($scope.point === $scope.total){
+			$scope.point = ''
+			console.log('point reached')
+			//point is rolled
+		} else if($scope.total === 7){
+			$scope.point = ''
+			//7 out, game reset
+			console.log('7 out')
+		}
+		if($scope.comeAmount !== ''){
+			$scope.comePoint = $scope.total  
+		}
+		gameState()
 	}
 	
 
 
 	$scope.passLine = function(){
-		var ask = prompt('bet amount?')
-		$scope.passAmount = ask
+		$scope.passAmount = prompt('bet amount?')
 		$scope.playerTotal -= $scope.passAmount
 		console.log('bet placed on pass')
 	}
 	$scope.dontPass = function(){
-		var ask = prompt('bet amount?')
-		$scope.dontPassAmount = ask
+		$scope.dontPassAmount = prompt('bet amount?')
 		$scope.playerTotal -= $scope.dontPassAmount
 		console.log('bet placed on dont pass')
 	}
 	$scope.field = function(){
-		$scope.fieldInput = true
+		$scope.fieldAmount = prompt('bet')
 		$scope.playerTotal -= $scope.fieldAmount
 		console.log('bet placed on field')
+	}
+	$scope.comeBet = function(){
+		//set next roll to the come bet number
+		$scope.comeAmount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.comeAmount
+		console.log('bet placed on come')
 	}
 //--------------- calc odds and payout functions -------------------
 	function passLineRoll(){
@@ -53,9 +87,13 @@ var app = angular.module('myApp', [])
 			$scope.winings += $scope.passAmount*2
 			$scope.playerTotal += $scope.winings
 			$scope.outCome = "you Won " +$scope.winings
+			$scope.passAmount = 0
 		} else if($scope.total === 2 || $scope.total === 3 || $scope.total === 12){
 			$scope.winings = 0
 			$scope.outCome = "you lost"
+			$scope.passAmount = 0
+		} else {
+			//hold value for game state part 2
 		}
 	}
 
@@ -64,12 +102,20 @@ var app = angular.module('myApp', [])
 			$scope.winings += $scope.dontPassAmount*2
 			$scope.playerTotal += $scope.winings
 			$scope.outCome = 'you won '+ $scope.winings+ ' on dont pass'
+			$scope.dontPassAmount = ''
 		} else if($scope.total === 12){
 			$scope.outCome = 'push'
-		} else {
+			$scope.playerTotal += $scope.dontPassAmount
+			$scope.dontPassAmount = ''
+		} else if($scope.total === 7 || $scope.total === 11){
 			$scope.winings = 0
-			$scope.outCome = 'you lost'
+			$scope.outCome = 'you lost '+ $scope.dontPassAmount+'on dont pass'
+			$scope.dontPassAmount = ''
+		} else {
+			//hold value for game state part 2
+
 		}
+
 	}
 
 	function field(){
@@ -78,13 +124,16 @@ var app = angular.module('myApp', [])
 			$scope.winings += $scope.fieldAmount*2
 			$scope.playerTotal += $scope.winings
 			$scope.outCome = 'you won '+ $scope.winings+ ' on field'
+			$scope.fieldAmount = ''
 		} else if($scope.total === 2 || $scope.total === 12) {
 			$scope.winings += $scope.fieldAmount*3
 			$scope.playerTotal += $scope.winings
 			$scope.outCome = 'you won '+ $scope.winings+ ' on field special'
+			$scope.fieldAmount = ''
 		} else {
 			$scope.winings = 0
 			$scope.outCome = 'you lost on field'
+			$scope.fieldAmount = ''
 		}
 
 	}

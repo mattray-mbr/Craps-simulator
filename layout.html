@@ -8,9 +8,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
 	<script src="main.js"></script>
 <body ng-controller="diceController">
-	<div class="container">
+	<div class="container overall-container">
 		<div class="row">
-			<div class="col-xs-2 square placeT"></div>
+			<div class="col-xs-2 square placeT"><h2>{{point}}</h2></div>
 			<div class="col-xs-1 square placeT">dc</div>
 			<div class="col-xs-8 square placeT">
 				<div class="container-fluid">
@@ -28,32 +28,32 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-2 square placeB">6&8</div>
-			<div class="col-xs-1 square placeB">dc</div>
+			<div class="col-xs-1 square placeB invalid">dc</div>
 			<div class="col-xs-8 square placeB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeA">4</div>
-						<div class="col-xs-2 square placeA">5</div>
-						<div class="col-xs-2 square placeA">6</div>
-						<div class="col-xs-2 square placeA">8</div>
-						<div class="col-xs-2 square placeA">9</div>
-						<div class="col-xs-2 square placeA">10</div>
+						<div class="col-xs-2 square placeA invalid">4</div>
+						<div class="col-xs-2 square placeA invalid">5</div>
+						<div class="col-xs-2 square placeA invalid">6</div>
+						<div class="col-xs-2 square placeA invalid">8</div>
+						<div class="col-xs-2 square placeA invalid">9</div>
+						<div class="col-xs-2 square placeA invalid">10</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-2 square placeT">4</div>
-						<div class="col-xs-2 square placeT">5</div>
-						<div class="col-xs-2 square placeT">6</div>
-						<div class="col-xs-2 square placeT">8</div>
-						<div class="col-xs-2 square placeT">9</div>
-						<div class="col-xs-2 square placeT">10</div>
+						<div class="col-xs-2 square placeT invalid">4 {{comePoint}}</div>
+						<div class="col-xs-2 square placeT invalid">5 {{comePoint}}</div>
+						<div class="col-xs-2 square placeT invalid">6 {{comePoint}}</div>
+						<div class="col-xs-2 square placeT invalid">8 {{comePoint}}</div>
+						<div class="col-xs-2 square placeT invalid">9 {{comePoint}}</div>
+						<div class="col-xs-2 square placeT invalid">10 {{comePoint}}</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-2 square placeA">4</div>
-						<div class="col-xs-2 square placeA">5</div>
-						<div class="col-xs-2 square placeA">6</div>
-						<div class="col-xs-2 square placeA">8</div>
-						<div class="col-xs-2 square placeA">9</div>
-						<div class="col-xs-2 square placeA">10</div>
+						<div class="col-xs-2 square placeA invalid">4</div>
+						<div class="col-xs-2 square placeA invalid">5</div>
+						<div class="col-xs-2 square placeA invalid">6</div>
+						<div class="col-xs-2 square placeA invalid">8</div>
+						<div class="col-xs-2 square placeA invalid">9</div>
+						<div class="col-xs-2 square placeA invalid">10</div>
 					</div>
 				</div>
 			</div>
@@ -63,32 +63,37 @@
 			<div class="col-xs-2 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeD"></div>
-						<div class="col-xs-4 square placeD"></div>
-						<div class="col-xs-2 square placeD"></div>
-						<div class="col-xs-4 square placeD"></div>
+						<div class="col-xs-2 square placeD invalid" ng-disabled="comeout"></div>
+						<div class="col-xs-4 square placeD valid" ng-disabled="pointSet">pass</div>
+						<div class="col-xs-2 square placeD invalid" ng-disabled="comeout"></div>
+						<div class="col-xs-4 square placeD valid" ng-disabled="pointSet">DP</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-12 square placeM">come</div>
+						<button class="col-xs-12 square placeM invalid" ng-disabled="comeout" ng-click="comeBet()">
+						<div class="circle" ng-show="pointSet">{{comeAmount}}</div>come</button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeM">field</div>
+						<div class="col-xs-12 square placeM valid" ng-click="field()">
+						<div class="circle">{{fieldAmount}}</div>field</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeF">dont pass</div>
+						<button class="col-xs-12 square placeF valid" ng-click="dontPass()" ng-disabled="pointSet">
+							<div class="circle">{{dontPassAmount}}</div>dont pass
+						</button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeG">odds</div>
+						<div class="col-xs-12 square placeG invalid" ng-disabled="comeout">odds</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeF">pass</div>
+						<button class="col-xs-12 square placeF valid" ng-click="passLine()" ng-disabled="pointSet">
+						<div class="circle">{{passAmount}}</div>pass</button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeG">odds</div>
+						<div class="col-xs-12 square placeG invalid">odds</div>
 					</div>
 				</div>
 			</div>
@@ -110,6 +115,25 @@
 			</div>
 		</div>
 	</div>
+	<div class="roll-area container-fluid">
+	<div class="row">
+		<div class="ui money col-xs-4">
+			<h3>Player Total: {{playerTotal | currency}}</h3>
+			<h3>Total bet: {{playerBet | currency}}</h3>
+			<h3>last Winings: {{winings | currency}}</h3>
+		</div>
+		<div class="ui dice col-xs-4">
+			<h4>Dice A: {{die1}}</h4>
+			<h4>Dice B: {{die2}}</h4>
+			<h4>Dice Total: {{total}}</h4>
+			<button class="roll btn btn-warning" ng-click="diceRoll()">Roll Dice</button>
+		</div>
+		<div class="ui other col-xs-4">
+			<h3>last Action outcome</h3>
+			<h4>{{outCome}}</h4>
+		</div>
+	</div> <!-- row -->
+	</div> <!-- container -->
 	
 </body>
 </html>
