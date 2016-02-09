@@ -163,9 +163,19 @@ button {
 .placeG {
 	height: 20px;
 }
-
-
-
+#dc {
+	background: url(dontCome.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#co {
+	background: url(images/come.jpg);
+	background-size: contain;
+}
+#passv {
+	background: url(images/passv.jpg);
+	background-size: cover;
+}
 
 
 
