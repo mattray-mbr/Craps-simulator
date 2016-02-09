@@ -11,16 +11,16 @@
 	<div class="container overall-container">
 		<div class="row">
 			<div class="col-xs-2 square placeT"><h2>{{point}}</h2></div>
-			<div class="col-xs-1 square placeT">dc</div>
+			<div class="col-xs-1 square placeT"></div>
 			<div class="col-xs-8 square placeT">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeT">4</div>
-						<div class="col-xs-2 square placeT">5</div>
-						<div class="col-xs-2 square placeT">6</div>
-						<div class="col-xs-2 square placeT">8</div>
-						<div class="col-xs-2 square placeT">9</div>
-						<div class="col-xs-2 square placeT">10</div>
+						<div class="col-xs-2 square placeT"></div>
+						<div class="col-xs-2 square placeT"></div>
+						<div class="col-xs-2 square placeT"></div>
+						<div class="col-xs-2 square placeT"></div>
+						<div class="col-xs-2 square placeT"></div>
+						<div class="col-xs-2 square placeT"></div>
 					</div>
 				</div>
 			</div>
@@ -28,32 +28,32 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-2 square placeB">6&8</div>
-			<div id="dc" class="col-xs-1 square placeB invalid">dc</div>
+			<div id="dc" class="col-xs-1 square placeB" ng-class="invalid"></div>
 			<div class="col-xs-8 square placeB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeA invalid">4</div>
-						<div class="col-xs-2 square placeA invalid">5</div>
-						<div class="col-xs-2 square placeA invalid">6</div>
-						<div class="col-xs-2 square placeA invalid">8</div>
-						<div class="col-xs-2 square placeA invalid">9</div>
-						<div class="col-xs-2 square placeA invalid">10</div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-2 square placeT invalid">4 <h4>{{comeNumber}}</h4></div>
-						<div class="col-xs-2 square placeT invalid">5 <h4>{{comeNumber}}</h4></div>
-						<div class="col-xs-2 square placeT invalid">6 <h4>{{comeNumber}}</h4></div>
-						<div class="col-xs-2 square placeT invalid">8 <h4>{{comeNumber}}</h4></div>
-						<div class="col-xs-2 square placeT invalid">9 <h4>{{comeNumber}}</h4></div>
-						<div class="col-xs-2 square placeT invalid">10 <h4>{{comeNumber}}</h4></div>
+						<div id="Pfour" class="col-xs-2 square placeT" ng-class="invalid"><h4>{{comeNumber}}</h4></div>
+						<div id="Pfive" class="col-xs-2 square placeT" ng-class="invalid"><h4>{{comeNumber}}</h4></div>
+						<div id="Psix" class="col-xs-2 square placeT" ng-class="invalid"><h4>{{comeNumber}}</h4></div>
+						<div id="Peight" class="col-xs-2 square placeT" ng-class="invalid"><h4>{{comeNumber}}</h4></div>
+						<div id="Pnine" class="col-xs-2 square placeT" ng-class="invalid"><h4>{{comeNumber}}</h4></div>
+						<div id="Pten" class="col-xs-2 square placeT" ng-class="invalid"><h4>{{comeNumber}}</h4></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-2 square placeA invalid">4</div>
-						<div class="col-xs-2 square placeA invalid">5</div>
-						<div class="col-xs-2 square placeA invalid">6</div>
-						<div class="col-xs-2 square placeA invalid">8</div>
-						<div class="col-xs-2 square placeA invalid">9</div>
-						<div class="col-xs-2 square placeA invalid">10</div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA" ng-class="invalid"></div>
 					</div>
 				</div>
 			</div>
@@ -63,59 +63,59 @@
 			<div class="col-xs-2 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeD invalid" ng-disabled="comeout"></div>
-						<div id="passv" class="col-xs-4 square placeD valid" ng-disabled="pointSet">pass</div>
-						<div class="col-xs-2 square placeD invalid" ng-disabled="comeout"></div>
-						<div class="col-xs-4 square placeD valid" ng-disabled="pointSet">DP</div>
+						<div class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
+						<button id="passv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="passLine()" ng-class="valid"></button>
+						<div class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
+						<button id="dpv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="dontPass()" ng-class="valid"></button>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<button id="co" class="col-xs-12 square placeM invalid" ng-disabled="comeout" ng-click="comeBet()">
-						<div class="circle" ng-show="pointSet">{{comeAmount}}</div>come</button>
+						<button id="co" class="col-xs-12 square placeM" ng-disabled="comeout" ng-click="comeBet()" ng-class="invalid">
+						<div class="circle" ng-show="pointSet">{{comeAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeM valid" ng-click="field()">
-						<div class="circle">{{fieldAmount}}</div>field</div>
+						<div id="Fie" class="col-xs-12 square placeM valid" ng-click="field()">
+						<div class="circle">{{fieldAmount}}</div></div>
 					</div>
 					<div class="row">
-						<button class="col-xs-12 square placeF valid" ng-click="dontPass()" ng-disabled="pointSet">
-							<div class="circle">{{dontPassAmount}}</div>dont pass
+						<button id="dph" class="col-xs-12 square placeF" ng-click="dontPass()" ng-disabled="pointSet" ng-class="valid">
+							<div class="circle">{{dontPassAmount}}</div>
 						</button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeG invalid" ng-disabled="comeout">odds</div>
+						<div class="col-xs-12 square placeG" ng-class="invalid" ng-disabled="comeout"></div>
 					</div>
 					<div class="row">
-						<button class="col-xs-12 square placeF valid" ng-click="passLine()" ng-disabled="pointSet">
-						<div class="circle">{{passAmount}}</div>pass</button>
+						<button id="passh" class="col-xs-12 square placeF" ng-click="passLine()" ng-disabled="pointSet" ng-class="valid">
+						<div class="circle">{{passAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeG invalid">odds</div>
+						<div class="col-xs-12 square placeG" ng-class="invalid"></div>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-4 square allB">
 				<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
-								</div>
-								<div class="row">
-									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
-								</div>
-								<div class="row">
-									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
-								</div>
-								<div class="row">
-									<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="roll-area container-fluid">
+	<div class="roll-area container-fluid"> <!-- HUD -->
 	<div class="row">
 		<div class="ui money col-xs-4">
 			<h3>Player Total: {{playerTotal | currency}}</h3>

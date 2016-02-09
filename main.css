@@ -19,6 +19,10 @@ button {
 	position: relative;
 	margin:0 auto;
 }
+.square {
+	border: 1px solid black;
+	padding: 0;
+}
 /* -------------- boxes ------------------------------------*/
 .box {
 	position: absolute;
@@ -31,13 +35,14 @@ button {
 	float: right;
 }
 .invalid {
-	background-color: rgba(255, 51,51, .6);
+	border: 5px solid rgba(255, 51,51, .6);
+	/*border-color: rgba(255, 51,51, .6);*/
 }
-.valid:hover {
-	background-color:rgba(50,204,51, .7);
+.valid {
+	border: 5px solid rgba(50,204,51, .7);
 }
 .valid:hover #pass-bottom{
-	background-color:rgba(50,204,51, .7);
+	border-color:rgba(50,204,51, .7);
 }
 #pass-bottom {
 	width: 710px;
@@ -117,6 +122,8 @@ button {
 .ui {
 	height: 150px;
 }
+
+/* --------------- HUD -------------------------*/
 .money {
 	background-color: #a86;
 }
@@ -126,16 +133,17 @@ button {
 .other {
 	background-color: #9fe;
 }
+
+
+
+
 /* --------------- layout test -----------------*/
 .overall-container {
 	/*background-image: url('table-layout.jpg');*/
 	background-size:100% auto;
 	background-repeat: no-repeat;
 }
-.square {
-	border: 1px solid black;
-	padding: 0;
-}
+
 .placeT {
 	height: 50px;
 }
@@ -167,18 +175,89 @@ button {
 	background: url(dontCome.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position:center;
+	background-size: 100%;
 }
 #co {
 	background: url(images/come.jpg);
 	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
 }
 #passv {
 	background: url(images/passv.jpg);
 	background-size: cover;
 }
-
-
-
+#Fie {
+	background: url(images/field.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#dpv {
+	background: url(images/dontpassv.jpg);
+	background-size: cover;
+	/*background-position:center;*/
+	background-repeat:no-repeat;
+	/*background-size: 100%;*/
+}
+#passh {
+	background: url(images/pass.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#dph {
+	background: url(images/dontPass.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Pfour {
+	background: url(images/four.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Pfive {
+	background: url(images/five.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Psix {
+	background: url(images/six.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Peight {
+	background: url(images/eight.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Pnine {
+	background: url(images/nine.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Pten {
+	background: url(images/ten.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
 
 
 
