@@ -27,7 +27,7 @@
 			<div class="col-xs-1 square placeT"></div>
 		</div>
 		<div class="row">
-			<div class="col-xs-2 square placeB">6&8</div>
+			<div class="col-xs-2 square placeB"></div>
 			<div id="dc" class="col-xs-1 square placeB" ng-class="invalid"></div>
 			<div class="col-xs-8 square placeB">
 				<div class="container-fluid">
@@ -68,6 +68,9 @@
 						<div class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
 						<button id="dpv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="dontPass()" ng-class="valid"></button>
 					</div>
+					<div class="row">
+						<div class="col-xs-12 square six-8 valid" ng-click="sixEight()"><h4>6 & 8</h4></div>
+					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 square allB">
@@ -100,32 +103,44 @@
 			<div class="col-xs-4 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+						<div class="col-xs-12 square propsY"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+						<div id="anySeven" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anySeven()"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+						<button id="Hfour" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardFour()" ng-class="invalid"></button>
+						<button id="Hten" class="col-xs-5 square propsA" ng-disabled="comeout" ng-click="hardTen()" ng-class="invalid"></button>
 					</div>
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1 square propsA"></div>
+						<button id="Hsix" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardSix()" ng-class="invalid"></button>
+						<button id="Height" class="col-xs-5 square propsA" ng-click="hardEight()" ng-class="invalid" ng-disabled="comeout"></button>
+					</div>
+					<div class="row">
+						<div id="Zthree" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyThree()"></div>
+						<div id="Yo" class="col-xs-5 square propsA valid" ng-click="anyYo()"></div>
+					</div>
+					<div class="row">
+						<div id="Ztwo" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyTwo()"></div>
+						<div id="Ztwelve" class="col-xs-5 square propsA valid" ng-click="anyTwelve()"></div>
+					</div>
+					<div class="row">
+						<div id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anyCraps()"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="roll-area container-fluid"> <!-- HUD -->
-	<div class="row">
+	<div class=" container-fluid"> <!-- HUD -->
+	<div class="roll-area row">
 		<div class="ui money col-xs-4">
 			<h3>Player Total: {{playerTotal | currency}}</h3>
 			<h3>Total bet: {{playerBet | currency}}</h3>
-			<h3>last Winings: {{winings | currency}}</h3>
+			<h3>last Winings: {{totalWinings | currency}}</h3>
 		</div>
 		<div class="ui dice col-xs-4">
-			<h4>Dice A: {{die1}}</h4>
-			<h4>Dice B: {{die2}}</h4>
-			<h4>Dice Total: {{total}}</h4>
+			<h4 class="pull-left">Dice A:{{die1}}<img src="images/dice.jpeg" alt=""></h4>
+			<h4 class="pull-right">Dice B:{{die2}} <img src="images/dice.jpeg" alt=""></h4>
 			<button class="roll btn btn-warning" ng-click="diceRoll()">Roll Dice</button>
 		</div>
 		<div class="ui other col-xs-4">

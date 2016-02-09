@@ -10,6 +10,13 @@ button {
 	background-color: #fff;
 	border: none;
 }
+button:active {
+	outline:0;
+	background-image: none;
+}
+body {
+	background-color: #27bddf;
+}
 .layout {
 	width: 1075px;
 	background-image: url('table-layout.jpg');
@@ -31,18 +38,15 @@ button {
 	width: 40px;
 	height: 40px;
 	border-radius: 20px;
-	background-color: #ebe;
+	background-color: #eca;
 	float: right;
 }
-.invalid {
+.invalid:hover {
 	border: 5px solid rgba(255, 51,51, .6);
 	/*border-color: rgba(255, 51,51, .6);*/
 }
-.valid {
+.valid:hover {
 	border: 5px solid rgba(50,204,51, .7);
-}
-.valid:hover #pass-bottom{
-	border-color:rgba(50,204,51, .7);
 }
 #pass-bottom {
 	width: 710px;
@@ -116,15 +120,18 @@ button {
 	left: 900px;
 }
 .roll-area {
-	border:1px solid black;
-	background-color: teal;
+	border:2px solid black;
+	border-radius: 10px;
+	overflow: hidden;
 }
 .ui {
 	height: 150px;
+	background-color: #A17211;
+	border:3px solid #a41;
 }
 
 /* --------------- HUD -------------------------*/
-.money {
+/*.money {
 	background-color: #a86;
 }
 .dice {
@@ -132,7 +139,7 @@ button {
 }
 .other {
 	background-color: #9fe;
-}
+}*/
 
 
 
@@ -142,6 +149,7 @@ button {
 	/*background-image: url('table-layout.jpg');*/
 	background-size:100% auto;
 	background-repeat: no-repeat;
+	background-color: rgba(130,110,80,.8);
 }
 
 .placeT {
@@ -160,7 +168,11 @@ button {
 	height: 300px;
 }
 .propsA {
-	height: 100px;
+	height: 60px;
+}
+.propsY {
+	height: 25px;
+	border: none;
 }
 .placeM {
 	height: 150px;
@@ -170,6 +182,9 @@ button {
 }
 .placeG {
 	height: 20px;
+}
+.six-8 {
+	height: 100px;
 }
 #dc {
 	background: url(dontCome.jpg);
@@ -258,7 +273,76 @@ button {
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
-
+#anySeven {
+	background: url(images/seven.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Hfour {
+	background: url(images/hard4.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Hten {
+	background: url(images/hard10.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Hsix {
+	background: url(images/hard6.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Height {
+	background: url(images/hard8.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Zthree {
+	background: url(images/three.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Yo {
+	background: url(images/eleven.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Ztwo {
+	background: url(images/two.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#Ztwelve {
+	background: url(images/twelve.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#anyCraps {
+	background: url(images/craps.jpg);
+	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
 
 
 
