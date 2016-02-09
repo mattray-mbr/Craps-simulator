@@ -11,6 +11,8 @@ var app = angular.module('myApp', [])
 	$scope.comePoint = ''
 	$scope.comeout = true
 	$scope.pointSet = false
+	$scope.comeAmount = ''
+	$scope.comeNumber = ''
 
  	function gameState(){
  		if($scope.point !== ''){
@@ -46,15 +48,28 @@ var app = angular.module('myApp', [])
 		} else if ($scope.point === $scope.total){
 			$scope.point = ''
 			console.log('point reached')
+			if($scope.passAmount > 0){
+				$scope.winings += $scope.passAmount*2
+				$scope.playerTotal += $scope.winings
+				$scope.outCome = "you Won pass line from point"
+			}
+			//payout winners
 			//point is rolled
 		} else if($scope.total === 7){
 			$scope.point = ''
 			//7 out, game reset
 			console.log('7 out')
 		}
-		if($scope.comeAmount !== ''){
-			$scope.comePoint = $scope.total  
+		//come bet stuff
+		if($scope.comePoint !== ''){
+			come()
 		}
+		if($scope.comeAmount !== ''){
+			comeStart()
+			console.log('comestart')
+			$scope.comeAmount = ''
+		}
+		$scope.winings = ''
 		gameState()
 	}
 	
@@ -87,16 +102,17 @@ var app = angular.module('myApp', [])
 			$scope.winings += $scope.passAmount*2
 			$scope.playerTotal += $scope.winings
 			$scope.outCome = "you Won " +$scope.winings
-			$scope.passAmount = 0
+			$scope.passAmount = ''
 		} else if($scope.total === 2 || $scope.total === 3 || $scope.total === 12){
 			$scope.winings = 0
 			$scope.outCome = "you lost"
-			$scope.passAmount = 0
+			$scope.passAmount = ''
 		} else {
+			console.log('point established')
+
 			//hold value for game state part 2
 		}
 	}
-
 	function dontPassLineRoll(){
 		if($scope.total === 2 || $scope.total === 3){
 			$scope.winings += $scope.dontPassAmount*2
@@ -113,11 +129,8 @@ var app = angular.module('myApp', [])
 			$scope.dontPassAmount = ''
 		} else {
 			//hold value for game state part 2
-
 		}
-
 	}
-
 	function field(){
 		if($scope.total === 3 || $scope.total === 4 || $scope.total === 9 || $scope.total === 10){
 			console.log('wining field')
@@ -135,8 +148,55 @@ var app = angular.module('myApp', [])
 			$scope.outCome = 'you lost on field'
 			$scope.fieldAmount = ''
 		}
-
+	}
+	function come(){
+		if($scope.comePoint === $scope.total){
+			$scope.winings += $scope.comeNumber*2
+			$scope.playerTotal += $scope.winings
+			$scope.outCome = 'you won come bet on '+ $scope.total
+			$scope.comeNumber = ''
+			$scope.comePoint = ''
+		} else if($scope.total === 7){
+			$scope.comeNumber = ''
+			$scope.comePoint = ''
+			$scope.outCome = 'you lost come bet'
+		}
+	}
+	function comeStart(){
+		if($scope.total === 7 || $scope.total === 11) {
+			$scope.winings += $scope.comeAmount*2
+			$scope.playerTotal += $scope.winings
+			$scope.outCome = "you Won " +$scope.winings
+		} else if($scope.total === 2 || $scope.total === 3 || $scope.total === 12){
+			$scope.winings = 0
+			$scope.outCome = "you lost"
+		} else {
+			console.log('not working yet')
+			$scope.comePoint = $scope.total
+			$scope.comeNumber = $scope.comeAmount
+			//hold value for game state part 2
+		}
 	}
 
-
 }])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
