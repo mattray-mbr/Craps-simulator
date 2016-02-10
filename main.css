@@ -15,7 +15,9 @@ button:active {
 	background-image: none;
 }
 body {
-	background-color: #27bddf;
+	background: url(images/skyline.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 .layout {
 	width: 1075px;
@@ -30,6 +32,30 @@ body {
 	border: 1px solid black;
 	padding: 0;
 }
+.dicePic {
+	width: 64px;
+	height: 62px;
+	border: 1px solid black;
+	background: url(images/DiceSheet.png)-1px -5px;
+}
+.die1 {
+	background: url(images/DiceSheet.png)-1px -5px;
+}
+.die2 {
+	background: url(images/DiceSheet.png)332px -5px;
+}
+.die3 {
+	background: url(images/DiceSheet.png)263px -5px;
+}
+.die4 {
+	background: url(images/DiceSheet.png)199px -5px;
+}
+.die5 {
+	background: url(images/DiceSheet.png)132px -5px;
+}
+.die6 {
+	background: url(images/DiceSheet.png)66px -5px;
+}
 /* -------------- boxes ------------------------------------*/
 .box {
 	position: absolute;
@@ -38,8 +64,13 @@ body {
 	width: 40px;
 	height: 40px;
 	border-radius: 20px;
-	background-color: #eca;
-	float: right;
+	/*float: right;*/
+	color: #fff;
+	font-weight: bold;
+	/*overflow: hidden;*/
+	background: url(images/chip.png);
+	padding-top:10px;
+	text-align: center;
 }
 .invalid:hover {
 	border: 5px solid rgba(255, 51,51, .6);
@@ -125,8 +156,8 @@ body {
 	overflow: hidden;
 }
 .ui {
-	height: 150px;
-	background-color: #A17211;
+	height: 350px;
+	background-color: #dd9d19;
 	border:3px solid #a41;
 }
 
@@ -149,7 +180,7 @@ body {
 	/*background-image: url('table-layout.jpg');*/
 	background-size:100% auto;
 	background-repeat: no-repeat;
-	background-color: rgba(130,110,80,.8);
+	background-color: rgba(130,110,80,.9);
 }
 
 .placeT {
