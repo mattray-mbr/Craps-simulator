@@ -28,16 +28,16 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-2 square placeB"></div>
-			<div id="dc" class="col-xs-1 square placeB" ng-class="invalid"></div>
+			<button id="dc" class="col-xs-1 square placeB" ng-disabled="comeout" ng-class="invalid" ng-click="dontCome()"><div class="circle" ng-show="showChipDC">{{dComeAmount}}</div></button>
 			<div class="col-xs-8 square placeB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome4}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome5}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome6}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome8}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome9}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome10}}</div></div>
 					</div>
 					<div class="row">
 						<div id="Pfour" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come4}}</div></div>
@@ -78,15 +78,15 @@
 				<div class="container-fluid">
 					<div class="row">
 						<button id="co" class="col-xs-12 square placeM" ng-disabled="comeout" ng-click="comeBet()" ng-class="invalid">
-						<div class="circle" ng-show="pointSet">{{comeAmount}}</div></button>
+						<div class="circle" ng-show="showChipC">{{comeAmount}}</div></button>
 					</div>
 					<div class="row">
 						<div id="Fie" class="col-xs-12 square placeM valid" ng-click="field()">
-						<div class="circle">{{fieldAmount}}</div></div>
+						<div class="circle" ng-show="showChipF">{{fieldAmount}}</div></div>
 					</div>
 					<div class="row">
 						<button id="dph" class="col-xs-12 square placeF" ng-click="dontPass()" ng-disabled="pointSet" ng-class="valid">
-							<div class="circle">{{dontPassAmount}}</div>
+							<div class="circle" ng-show="showChipDP">{{dontPassAmount}}</div>
 						</button>
 					</div>
 					<div class="row">
@@ -94,7 +94,7 @@
 					</div>
 					<div class="row">
 						<button id="passh" class="col-xs-12 square placeF" ng-click="passLine()" ng-disabled="pointSet" ng-class="valid">
-						<div class="circle">{{passAmount}}</div></button>
+						<div class="circle" ng-show="showChipP">{{passAmount}}</div></button>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 square placeG" ng-class="invalid"></div>
@@ -107,26 +107,26 @@
 						<div class="col-xs-12 square propsY"></div>
 					</div>
 					<div class="row">
-						<div id="anySeven" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anySeven()"><div class="circle">{{anySevenAmount}}</div></div>
+						<div id="anySeven" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anySeven()"><div class="circle" ng-show="showChip7">{{anySevenAmount}}</div></div>
 					</div>
 					<div class="row">
-						<button id="Hfour" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardFour()" ng-class="invalid"><div class="circle">{{h4Amount}}</div></button>
-						<button id="Hten" class="col-xs-5 square propsA" ng-disabled="comeout" ng-click="hardTen()" ng-class="invalid"><div class="circle">{{h10Amount}}</div></button>
+						<button id="Hfour" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardFour()" ng-class="invalid"><div class="circle" ng-show="showChipH4">{{hardFourAmount}}</div></button>
+						<button id="Hten" class="col-xs-5 square propsA" ng-disabled="comeout" ng-click="hardTen()" ng-class="invalid"><div class="circle" ng-show="showChipH10">{{hardTenAmount}}</div></button>
 					</div>
 					<div class="row">
-						<button id="Hsix" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardSix()" ng-class="invalid"><div class="circle">{{h6Amount}}</div></button>
-						<button id="Height" class="col-xs-5 square propsA" ng-click="hardEight()" ng-class="invalid" ng-disabled="comeout"><div class="circle">{{h8Amount}}</div></button>
+						<button id="Hsix" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardSix()" ng-class="invalid"><div class="circle" ng-show="showChipH6">{{hardSixAmount}}</div></button>
+						<button id="Height" class="col-xs-5 square propsA" ng-click="hardEight()" ng-class="invalid" ng-disabled="comeout"><div class="circle" ng-show="showChipH8">{{hardEightAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div id="Zthree" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyThree()"><div class="circle">{{threeAmount}}</div></div>
-						<div id="Yo" class="col-xs-5 square propsA valid" ng-click="anyYo()"><div class="circle">{{yoAmount}}</div></div>
+						<div id="Zthree" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyThree()"><div class="circle" ng-show="showChip3">{{threeAmount}}</div></div>
+						<div id="Yo" class="col-xs-5 square propsA valid" ng-click="anyYo()"><div class="circle" ng-show="showChip11">{{yoAmount}}</div></div>
 					</div>
 					<div class="row">
-						<div id="Ztwo" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyTwo()"><div class="circle">{{twoAmount}}</div></div>
-						<div id="Ztwelve" class="col-xs-5 square propsA valid" ng-click="anyTwelve()"><div class="circle">{{twelveAmount}}</div></div>
+						<div id="Ztwo" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyTwo()"><div class="circle" ng-show="showChip2">{{twoAmount}}</div></div>
+						<div id="Ztwelve" class="col-xs-5 square propsA valid" ng-click="anyTwelve()"><div class="circle" ng-show="showChip12">{{twelveAmount}}</div></div>
 					</div>
 					<div class="row">
-						<div id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anyCraps()"><div class="circle">{{anyCrapsAmount}}</div></div>
+						<div id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anyCraps()"><div class="circle" ng-show="showChipCraps">{{anyCrapsAmount}}</div></div>
 					</div>
 				</div>
 			</div>
