@@ -186,6 +186,13 @@ body {
 .six-8 {
 	height: 100px;
 }
+.blank {
+	background: url(images/blank.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position:center;
+	background-size: 100%;
+}
 #dc {
 	background: url(dontCome.jpg);
 	background-size: cover;

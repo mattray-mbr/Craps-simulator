@@ -26,6 +26,8 @@ var app = angular.module('myApp', [])
 	$scope.twoWinings = 0
 	$scope.yoWinings = 0
 	$scope.twelveWinings = 0
+	$scope.BEightWinings = 0
+	$scope.BsixWinings = 0
 	$scope.totalWinings
 	$scope.valid = "valid"
  	$scope.invalid = "invalid"
@@ -70,6 +72,8 @@ var app = angular.module('myApp', [])
 		three()
 		eleven()
 		twelve()
+		bigSix()
+		bigEight()
 		point()
 		gameState() //switch game state if point is set
 		addWinings()
@@ -147,6 +151,16 @@ var app = angular.module('myApp', [])
 		$scope.twelveAmount = prompt('bet amount?')
 		$scope.playerTotal -= $scope.twelveAmount
 		console.log('bet placed on twelve')
+	}
+	$scope.bigSix = function(){
+		$scope.bigSixAmount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.bigSixAmount
+		console.log('bet placed on big six')
+	}
+	$scope.bigEight = function(){
+		$scope.bigEightAmount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.bigEightAmount
+		console.log('bet placed on big eight')
 	}
 //--------------- calc odds and payout functions -------------------
 	function passLineRoll(){
@@ -367,8 +381,32 @@ var app = angular.module('myApp', [])
 			}
 		}
 	}
+	function bigSix(){
+		if($scope.bigSixAmount > 0){
+			if($scope.total === 6){
+				$scope.BsixWinings = $scope.bigSixAmount*2
+				$scope.outCome += 'you won on big 6'
+				$scope.bigSixAmount = 0
+			} else {
+				$scope.outCome += 'you lost on big 6'
+				$scope.bigSixAmount = 0
+			}
+		}
+	}
+	function bigEight(){
+		if($scope.bigEightAmount > 0){
+			if($scope.total === 8){
+				$scope.BEightWinings = $scope.bigEightAmount*2
+				$scope.outCome += 'you won on big 8'
+				$scope.bigEightAmount = 0
+			} else {
+				$scope.outCome += 'you lost on big 8'
+				$scope.bigEightAmount = 0
+			}
+		}
+	}
 	function addWinings() {
-		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings
+		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings
 		$scope.playerTotal += $scope.totalWinings
 		$scope.totalWinings = 0
 		$scope.Fwinings = 0
@@ -384,6 +422,8 @@ var app = angular.module('myApp', [])
 		$scope.twoWinings = 0
 		$scope.yoWinings = 0
 		$scope.twelveWinings = 0
+		$scope.BsixWinings = 0
+		$scope.BEightWinings = 0
 	}
 	function point(){
 		if($scope.point === ''){
