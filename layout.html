@@ -8,44 +8,41 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
 	<script src="main.js"></script>
 <body ng-controller="diceController">
+	<div class="container">
+		<h1 class="text-center">Casino Craps Sim</h1>
+	</div>
 	<div class="container overall-container">
 		<div class="row">
-			<div class="col-xs-2 square placeT"><h2>{{point}}</h2></div>
-			<div class="col-xs-1 square placeT"></div>
-			<div class="col-xs-8 square placeT">
+			<div class="col-xs-3 square placeA"><h2 class="point-set">Point Set on: <span class=point-value>{{point}}</span></h2></div>
+			<div class="col-xs-8 square placeA">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeT"></div>
-						<div class="col-xs-2 square placeT"></div>
-						<div class="col-xs-2 square placeT"></div>
-						<div class="col-xs-2 square placeT"></div>
-						<div class="col-xs-2 square placeT"></div>
-						<div class="col-xs-2 square placeT"></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle" ng-show="showChipDC4">{{Dcome4}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle" ng-show="showChipDC5">{{Dcome5}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle" ng-show="showChipDC6">{{Dcome6}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle" ng-show="showChipDC8">{{Dcome8}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle" ng-show="showChipDC9">{{Dcome9}}</div></div>
+						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle" ng-show="showChipDC10">{{Dcome10}}</div></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 square placeT"></div>
+			<div class="col-xs-1  placeA"></div>
 		</div>
 		<div class="row">
-			<div class="col-xs-2 square placeB"></div>
-			<button id="dc" class="col-xs-1 square placeB" ng-disabled="comeout" ng-class="invalid" ng-click="dontCome()"><div class="circle" ng-show="showChipDC">{{dComeAmount}}</div></button>
+			<!-- <div class="col-xs-2 square placeB"></div> -->
+			<button id="dc" class="col-xs-3 square placeB" ng-disabled="comeout" ng-class="invalid" ng-click="dontCome()"><div class="circle" ng-show="showChipDC">{{dComeAmount}}</div></button>
 			<div class="col-xs-8 square placeB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome4}}</div></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome5}}</div></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome6}}</div></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome8}}</div></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome9}}</div></div>
-						<div class="col-xs-2 square placeA blank" ng-class="invalid"><div class="circle">{{Dcome10}}</div></div>
+						
 					</div>
 					<div class="row">
-						<div id="Pfour" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come4}}</div></div>
-						<div id="Pfive" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come5}}</div></div>
-						<div id="Psix" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come6}}</div></div>
-						<div id="Peight" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come8}}</div></div>
-						<div id="Pnine" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come9}}</div></div>
-						<div id="Pten" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle">{{come10}}</div></div>
+						<div id="Pfour" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle" ng-show="showChipC4">{{come4}}</div></div>
+						<div id="Pfive" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle" ng-show="showChipC5">{{come5}}</div></div>
+						<div id="Psix" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle" ng-show="showChipC6">{{come6}}</div></div>
+						<div id="Peight" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle" ng-show="showChipC8">{{come8}}</div></div>
+						<div id="Pnine" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle" ng-show="showChipC9">{{come9}}</div></div>
+						<div id="Pten" class="col-xs-2 square placeT" ng-class="invalid"><div class="circle" ng-show="showChipC10">{{come10}}</div></div>
 					</div>
 					<div class="row">
 						<div class="col-xs-2 square placeA blank" ng-class="invalid"></div>
@@ -57,20 +54,19 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 square placeB"></div>
+			<div class="col-xs-1 placeB"></div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
+						<div id="p-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
 						<button id="passv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="passLine()" ng-class="valid"></button>
-						<div class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
+						<div id="d-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
 						<button id="dpv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="dontPass()" ng-class="valid"></button>
 					</div>
 					<div class="row">
-						<div class="col-xs-6 square six-8 valid" ng-click="bigSix()"><h4>6</h4></div>
-						<div class="col-xs-6 square six-8 valid" ng-click="bigEight()"><h4>8</h4></div>
+						<div id="big68" class="col-xs-12 square six-8 valid" ng-click="bigSix()"></div>
 					</div>
 				</div>
 			</div>
@@ -90,24 +86,21 @@
 						</button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeG" ng-class="invalid" ng-disabled="comeout"></div>
+						<div id="oddsDP" class="col-xs-12 square placeG" ng-class="invalid" ng-disabled="comeout"></div>
 					</div>
 					<div class="row">
 						<button id="passh" class="col-xs-12 square placeF" ng-click="passLine()" ng-disabled="pointSet" ng-class="valid">
 						<div class="circle" ng-show="showChipP">{{passAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 square placeG" ng-class="invalid"></div>
+						<div id="oddsP" class="col-xs-12 square placeG" ng-class="invalid"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-4 square allB">
+			<div class="col-xs-4  allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-12 square propsY"></div>
-					</div>
-					<div class="row">
-						<div id="anySeven" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anySeven()"><div class="circle" ng-show="showChip7">{{anySevenAmount}}</div></div>
+						<div id="anySeven" class="col-xs-10 col-xs-offset-1 square propsAa valid" ng-click="anySeven()"><div class="circle" ng-show="showChip7">{{anySevenAmount}}</div></div>
 					</div>
 					<div class="row">
 						<button id="Hfour" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardFour()" ng-class="invalid"><div class="circle" ng-show="showChipH4">{{hardFourAmount}}</div></button>
@@ -126,7 +119,7 @@
 						<div id="Ztwelve" class="col-xs-5 square propsA valid" ng-click="anyTwelve()"><div class="circle" ng-show="showChip12">{{twelveAmount}}</div></div>
 					</div>
 					<div class="row">
-						<div id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsA valid" ng-click="anyCraps()"><div class="circle" ng-show="showChipCraps">{{anyCrapsAmount}}</div></div>
+						<div id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsAa valid" ng-click="anyCraps()"><div class="circle" ng-show="showChipCraps">{{anyCrapsAmount}}</div></div>
 					</div>
 				</div>
 			</div>
@@ -146,7 +139,9 @@
 		</div>
 		<div class="ui other col-xs-4">
 			<h3>Outcome log</h3>
-			<h4>{{outCome}}</h4>
+			<ul >
+				<li ng-repeat="item in outCome">{{item}}</li>
+			</ul>
 		</div>
 	</div> <!-- row -->
 	</div> <!-- container -->

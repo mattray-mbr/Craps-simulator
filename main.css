@@ -5,6 +5,14 @@ h3 {
 	margin: 0;
 	margin-bottom: 20px;
 }
+h2 {
+	margin: 0;
+}
+li {
+	margin-top:0;
+	font-size: 20px;
+	color: #fff;
+}
 button {
 	list-style: none;
 	background-color: #fff;
@@ -18,6 +26,11 @@ body {
 	background: url(images/skyline.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
+}
+@media(max-width:1000px){
+	body {
+		background-size: cover;
+	}
 }
 .layout {
 	width: 1075px;
@@ -36,25 +49,26 @@ body {
 	width: 64px;
 	height: 62px;
 	border: 1px solid black;
-	background: url(images/DiceSheet.png)-1px -5px;
+	background: url(images/DiceSheet.png)-1px -3px;
+	border-radius: 5px;
 }
 .die1 {
-	background: url(images/DiceSheet.png)-1px -5px;
+	background: url(images/DiceSheet.png)-1px -3px;
 }
 .die2 {
-	background: url(images/DiceSheet.png)332px -5px;
+	background: url(images/DiceSheet.png)317px -3px;
 }
 .die3 {
-	background: url(images/DiceSheet.png)263px -5px;
+	background: url(images/DiceSheet.png)254px -3px;
 }
 .die4 {
-	background: url(images/DiceSheet.png)199px -5px;
+	background: url(images/DiceSheet.png)190px -3px;
 }
 .die5 {
-	background: url(images/DiceSheet.png)132px -5px;
+	background: url(images/DiceSheet.png)126px -3px;
 }
 .die6 {
-	background: url(images/DiceSheet.png)66px -5px;
+	background: url(images/DiceSheet.png)63px -3px;
 }
 /* -------------- boxes ------------------------------------*/
 .box {
@@ -154,13 +168,21 @@ body {
 	border:2px solid black;
 	border-radius: 10px;
 	overflow: hidden;
+	margin-top: 20px;
 }
 .ui {
 	height: 350px;
 	background-color: #dd9d19;
 	border:3px solid #a41;
 }
-
+.point-set {
+	color: #fff;
+	margin: 5px;
+	text-align: center;
+}
+.point-value {
+	color: #3af;
+}
 /* --------------- HUD -------------------------*/
 /*.money {
 	background-color: #a86;
@@ -181,16 +203,18 @@ body {
 	background-size:100% auto;
 	background-repeat: no-repeat;
 	background-color: rgba(130,110,80,.9);
+	border-radius: 15px;
+	padding-bottom: 20px;
 }
 
 .placeT {
-	height: 50px;
+	height: 60px;
 }
 .placeB {
 	height: 100px;
 }
 .placeA {
-	height: 25px;
+	height: 40px;
 }
 .allB {
 	height: 400px;
@@ -199,7 +223,10 @@ body {
 	height: 300px;
 }
 .propsA {
-	height: 60px;
+	height: 74px;
+}
+.propsAa {
+	height: 52px;
 }
 .propsY {
 	height: 25px;
@@ -219,32 +246,30 @@ body {
 }
 .blank {
 	background: url(images/test.jpg);
-	background-size: cover;
 	background-repeat: no-repeat;
 	background-position:center;
 	background-size: 100%;
 }
 #dc {
 	background: url(images/dontCome.jpg);
-	background-size: cover;
 	background-repeat: no-repeat;
 	background-position:center;
 	background-size: 100%;
 }
 #co {
 	background: url(images/come.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #passv {
 	background: url(images/passv.jpg);
-	background-size: contain;
+	background-size: cover;
+	background-position:center;
+	background-repeat:no-repeat;
 }
 #Fie {
 	background: url(images/field.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
@@ -252,132 +277,137 @@ body {
 #dpv {
 	background: url(images/dontpassv.jpg);
 	background-size: cover;
-	/*background-position:center;*/
+	background-position:center;
 	background-repeat:no-repeat;
-	/*background-size: 100%;*/
+}
+#d-odds-vert {
+	background: url(images/oddsVert.jpg);
+	background-size: cover;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+#p-odds-vert {
+	background: url(images/oddsVert.jpg);
+	background-size: cover;
+	background-position:center;
+	background-repeat:no-repeat;
 }
 #passh {
 	background: url(images/pass.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #dph {
 	background: url(images/dontPass.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Pfour {
 	background: url(images/four.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Pfive {
 	background: url(images/five.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Psix {
 	background: url(images/six.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Peight {
 	background: url(images/eight.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Pnine {
 	background: url(images/nine.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Pten {
 	background: url(images/ten.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #anySeven {
 	background: url(images/seven.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Hfour {
 	background: url(images/hard4.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Hten {
 	background: url(images/hard10.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Hsix {
 	background: url(images/hard6.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Height {
 	background: url(images/hard8.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Zthree {
 	background: url(images/three.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Yo {
 	background: url(images/eleven.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Ztwo {
 	background: url(images/two.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #Ztwelve {
 	background: url(images/twelve.jpg);
-	background-size: contain;
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;
 }
 #anyCraps {
 	background: url(images/craps.jpg);
-	background-size: contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#big68 {
+	background: url(images/big68.jpg);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+#oddsP, #oddsDP {
+	background: url(images/blankL.jpg);
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size: 100%;

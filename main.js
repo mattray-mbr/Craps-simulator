@@ -2,11 +2,11 @@ var app = angular.module('myApp', [])
 	app.controller('diceController', ['$scope', function($scope){
 	
 	$scope.playerTotal = 100
+	$scope.outCome = []
 
 	$scope.die1
 	$scope.die2
 	$scope.winings = 0
-	$scope.outCome = ''
 	$scope.point = ''
 	$scope.comeout = true
 	$scope.pointSet = false
@@ -67,7 +67,7 @@ var app = angular.module('myApp', [])
 	$scope.diceRoll = function(){
 		//calc all bets
 		//spit out bet total
-		$scope.outCome = ''
+		$scope.outCome = []
 		$scope.die1 = Math.floor((Math.random()*6)+1) 
 		$scope.die2 = Math.floor((Math.random()*6)+1) 
 		var total =  $scope.die1 + $scope.die2
@@ -126,6 +126,42 @@ var app = angular.module('myApp', [])
 		if($scope.hardTenAmount < 1){
 			$scope.showChipH10 = false
 		}
+		if($scope.Dcome4 < 1){
+			$scope.showChipDC4 = false
+		}
+		if($scope.Dcome5 < 1){
+			$scope.showChipDC5 = false
+		}
+		if($scope.Dcome6 < 1){
+			$scope.showChipDC6 = false
+		}
+		if($scope.Dcome8 < 1){
+			$scope.showChipDC8 = false
+		}
+		if($scope.Dcome9 < 1){
+			$scope.showChipDC9 = false
+		}
+		if($scope.Dcome10 < 1){
+			$scope.showChipDC10 = false
+		}
+		if($scope.come4 < 1){
+			$scope.showChipC4 = false
+		}
+		if($scope.come5 < 1){
+			$scope.showChipC5 = false
+		}
+		if($scope.come6 < 1){
+			$scope.showChipC6 = false
+		}
+		if($scope.come8 < 1){
+			$scope.showChipC8 = false
+		}
+		if($scope.come9 < 1){
+			$scope.showChipC9 = false
+		}
+		if($scope.come10 < 1){
+			$scope.showChipC10 = false
+		}
 		$scope.showChipC = false
 		$scope.showChipDC = false
 		$scope.showChip7 = false
@@ -149,7 +185,7 @@ var app = angular.module('myApp', [])
 		$scope.showChipDP = true
 	}
 	$scope.field = function(){
-		$scope.fieldAmount = prompt('bet')
+		$scope.fieldAmount = prompt('bet amount?')
 		$scope.playerTotal -= $scope.fieldAmount
 		$scope.showChipF = true
 	}
@@ -274,22 +310,22 @@ var app = angular.module('myApp', [])
 		if($scope.passAmount > 0 && $scope.point < 1){
 			if($scope.total === 7 || $scope.total === 11) {
 				$scope.Pwinings = $scope.passAmount*2
-				$scope.outCome += "you Won on pass" 
+				$scope.outCome.push(("Won "+$scope.passAmount+" on pass line") )
 				$scope.passAmount = ''
 			} else if($scope.total === 2 || $scope.total === 3 || $scope.total === 12){
 				$scope.Pwinings = 0
-				$scope.outCome = "you lost"
+				$scope.outCome.push( ("Lost "+$scope.passAmount+" on pass line") )
 				$scope.passAmount = ''
 			} else {
 				console.log('point established, pass bet continues')
 			}
 		} else if($scope.passAmount > 0 && $scope.point > 1){
 			if($scope.total === 7){
-				$scope.outCome += 'lost on pass bet'
+				$scope.outCome.push( ('Lost '+$scope.passAmount+' on pass line') )
 				$scope.passAmount = ''
 			} else if($scope.total === $scope.point){
 				$scope.Pwinings = $scope.passAmount*2
-				$scope.outCome += 'you won on pass'
+				$scope.outCome.push( ('Won'+$scope.passAmount+' on pass line') )
 				$scope.passAmount = ''
 			}
 		}
@@ -298,26 +334,26 @@ var app = angular.module('myApp', [])
 		if($scope.dontPassAmount > 0 && $scope.point < 1) {
 			if($scope.total === 2 || $scope.total === 3){
 				$scope.DPwinings = $scope.dontPassAmount*2
-				$scope.outCome = 'you won '+ $scope.DPwinings+ ' on dont pass'
+				$scope.outCome.push( ('Won '+$scope.dontPassAmount+' on dont pass line') )
 				$scope.dontPassAmount = ''
 			} else if($scope.total === 12){
-				$scope.outCome = 'push on dont pass 12'
+				$scope.outCome.push( ('Push on dont pass line12') )
 				$scope.playerTotal += $scope.dontPassAmount
 				$scope.dontPassAmount = ''
 			} else if($scope.total === 7 || $scope.total === 11){
 				$scope.DPwinings = 0
-				$scope.outCome = 'you lost '+ $scope.dontPassAmount+'on dont pass'
-				$scope.dontPassAmount = ''
+				$scope.outCome.push( ('Lost '+$scope.dontPassAmount+' on dont pass line') )
+				$scope.dontPassAmount = 0
 			} else {
 				console.log('point established, dont pass bet stays')
 			}
 		} else if ($scope.dontPassAmount > 0 && $scope.point > 1){
 			if($scope.total === 7){
 				$scope.DPwinings = $scope.dontPassAmount*2
-				$scope.outCome += 'you won on dont pass'
+				$scope.outCome.push( ('Won '+$scope.dontPassAmount+' on dont pass line') )
 				$scope.dontPassAmount = ''
 			} else if($scope.total === $scope.point){
-				$scope.outCome += 'you lost on dont pass'
+				$scope.outCome.push( ('Lost '+$scope.dontPassAmount+' on dont pass') )
 				$scope.dontPassAmount = ''
 			}
 		}
@@ -326,15 +362,15 @@ var app = angular.module('myApp', [])
 		if($scope.fieldAmount > 0) {
 			if($scope.total === 3 || $scope.total === 4 || $scope.total === 9 || $scope.total === 10){
 				$scope.Fwinings = $scope.fieldAmount*2
-				$scope.outCome = 'you won '+ $scope.Fwinings+ ' on field'
+				$scope.outCome.push( ('Won '+$scope.fieldAmount+' on field') )
 				$scope.fieldAmount = ''
 			} else if($scope.total === 2 || $scope.total === 12) {
 				$scope.Fwinings = $scope.fieldAmount*3
-				$scope.outCome = 'you won '+ $scope.Fwinings+ ' on field special'
+				$scope.outCome.push( ('Won '+$scope.Fwinings+' on field double') )
 				$scope.fieldAmount = ''
 			} else {
 				$scope.Fwinings = 0
-				$scope.outCome = 'you lost on field'
+				$scope.outCome.push( ('Lost '+$scope.fieldAmount+' on field') )
 				$scope.fieldAmount = ''
 			}
 		}
@@ -343,30 +379,37 @@ var app = angular.module('myApp', [])
 		if($scope.point > 0 && $scope.comeAmount > 0){
 			if($scope.total === 7 || $scope.total === 11){
 				$scope.comeWinings = $scope.comeAmount*2
-				$scope.outCome += 'you won on come bet initial'
+				$scope.outCome.push( ('Won '+$scope.comeAmount+' on come bet initial') )
 				$scope.comeAmount = ''
 			} else if($scope.total === 2 || $scope.total === 3 || $scope.total === 12){
-				$scope.outCome += 'you lost come bet initial'
+				$scope.outCome.push( ('Lost '+$scope.comeAmount+' on come bet initial') )
 				$scope.comeAmount = ''
 			} else {
 				switch($scope.total){
 					case 4:
 						$scope.come4 = $scope.comeAmount
+						$scope.showChipC4 = true
 						break
 					case 5:
 						$scope.come5 = $scope.comeAmount
+						$scope.showChipC5 = true
 						break
 					case 6:
 						$scope.come6 = $scope.comeAmount
+						$scope.showChipC6 = true
 						break
 					case 8:
 						$scope.come8 = $scope.comeAmount
+						$scope.showChipC8 = true
 						break
 					case 9:
 						$scope.come9 = $scope.comeAmount
+						$scope.showChipC9 = true
 						break
 					case 10:
 						$scope.come10 = $scope.comeAmount
+						$scope.showChipC10 = true
+						break
 				}
 				$scope.comeAmount = ''
 			}
@@ -376,34 +419,41 @@ var app = angular.module('myApp', [])
 		if($scope.point > 0 && $scope.dComeAmount > 0){
 			if($scope.total === 2 || $scope.total === 3){
 				$scope.dontComeWinings = $scope.dComeAmount*2
-				$scope.outCome += 'you won on dont come initail bet'
+				$scope.outCome.push( ('Won '+$scope.dComeAmount+' on dont come initial') )
 				$scope.dComeAmount = ''
 			} else if($scope.total === 7 || $scope.total === 11){
-				$scope.outCome += "you lost on dont come bet initial"
+				$scope.outCome.push( ("Lost "+$scope.dComeAmount+" on dont come initial") )
 				$scope.dComeAmount = ''
 			} else if($scope.total === 12){
 				$scope.playerTotal += $scope.dComeAmount
-				$scope.outCome += "push on dont come bet"
+				$scope.outCome.push("Push on dont come bet initial") 
 				$scope.dComeAmount = ''
 			} else {
 				switch($scope.total){
 					case 4:
 						$scope.Dcome4 = $scope.dComeAmount
+						$scope.showChipDC4 = true
 						break
 					case 5:
 						$scope.Dcome5 = $scope.dComeAmount
+						$scope.showChipDC5 = true
 						break
 					case 6:
 						$scope.Dcome6 = $scope.dComeAmount
+						$scope.showChipDC6 = true
 						break
 					case 8:
 						$scope.Dcome8 = $scope.dComeAmount
+						$scope.showChipDC8 = true
 						break
 					case 9:
 						$scope.Dcome9 = $scope.dComeAmount
+						$scope.showChipDC9 = true
 						break
 					case 10:
 						$scope.Dcome10 = $scope.dComeAmount
+						$scope.showChipDC10 = true
+						break
 				}
 				$scope.dComeAmount = ''
 			}
@@ -414,12 +464,12 @@ var app = angular.module('myApp', [])
 			switch($scope.total){
 				case 7:
 					$scope.comeNumWinings = 0
-					$scope.outCome += 'you lost all come bets'
+					$scope.outCome.push( ('Lost '+$scope.come4+' on number 4') )
 					$scope.come4 = 0
 					break
 				case 4:
 					$scope.comeNumWinings = $scope.come4*4
-					$scope.outCome += "you won come bet on 4"
+					$scope.outCome.push( ("Won "+$scope.come4*4+" on number 4") )
 					$scope.come4 = 0
 					break
 				default:
@@ -433,12 +483,12 @@ var app = angular.module('myApp', [])
 			switch($scope.total){
 				case 7:
 					$scope.comeNumWinings = 0
-					$scope.outCome += 'you lost all come bets'
+					$scope.outCome.push( ('Lost '+$scope.come5+' on number 5') )
 					$scope.come5 = 0
 					break
 				case 5:
 					$scope.comeNumWinings = $scope.come5*3
-					$scope.outCome += 'you won come bet on 5'
+					$scope.outCome.push( ("Won "+$scope.come5*3+" on number 5") )
 					$scope.come5 = 0
 					break
 				default:
@@ -452,12 +502,12 @@ var app = angular.module('myApp', [])
 			switch($scope.total){
 				case 7:
 					$scope.comeNumWinings = 0
-					$scope.outCome += 'you lost all come bets'
+					$scope.outCome.push( ('Lost '+$scope.come6+' on number 6') )
 					$scope.come6 = 0
 					break
 				case 6:
 					$scope.comeNumWinings = $scope.come6*2
-					$scope.outCome += 'you won come bet on 6'
+					$scope.outCome.push( ("Won "+$scope.come6*2+" on number 6") )
 					$scope.come6 = 0
 				default:
 					//do nothing
@@ -470,12 +520,12 @@ var app = angular.module('myApp', [])
 			switch($scope.total){
 				case 7:
 					$scope.comeNumWinings = 0
-					$scope.outCome += 'you lost all come bets'
+					$scope.outCome.push( ('Lost '+$scope.come8+' on number 8') )
 					$scope.come8 = 0
 					break
 				case 8:
 					$scope.comeNumWinings = $scope.come6*2
-					$scope.outCome += "you won come bet on 8"
+					$scope.outCome.push( ("Won "+$scope.come8*2+" on number 8") )
 					$scope.come8 = 0
 					break
 				default:
@@ -489,12 +539,12 @@ var app = angular.module('myApp', [])
 			switch($scope.total){
 				case 7:
 					$scope.comeNumWinings = 0
-					$scope.outCome += 'you lost all come bets'
+					$scope.outCome.push( ('Lost '+$scope.come9+' on number 9') )
 					$scope.come9 = 0
 					break
 				case 9:
 					$scope.comeNumWinings = $scope.come9*3
-					$scope.outCome += 'you won come bet on 9'
+					$scope.outCome.push( ("Won "+$scope.come9*3+" on number 9") )
 					$scope.come9 = 0
 					break
 				default:
@@ -508,12 +558,12 @@ var app = angular.module('myApp', [])
 			switch($scope.total){
 				case 7:
 					$scope.comeNumWinings = 0
-					$scope.outCome += 'you lost all come bets'
+					$scope.outCome.push( ('Lost '+$scope.come10+' on number 10') )
 					$scope.come10 = 0
 					break
 				case 10:
 					$scope.comeNumWinings = $scope.come10*4
-					$scope.outCome += 'you won come bet on 10'
+					$scope.outCome.push( ("Won "+$scope.come10*4+" on number 10") )
 					$scope.come10 = 0
 					break
 				default:
@@ -528,12 +578,12 @@ function Dcome4(){
 			switch($scope.total){
 				case 4:
 					$scope.DcomeNumWinings = 0
-					$scope.outCome += 'you lost dont come bet on 4'
+					$scope.outCome.push( ('Lost '+$scope.Dcome4+' on number 4') )
 					$scope.Dcome4 = 0
 					break
 				case 7:
 					$scope.DcomeNumWinings = $scope.Dcome4*4
-					$scope.outCome += "you won dont come bet on 4"
+					$scope.outCome.push( ('Won '+$scope.Dcome4*4+' on number 4') )
 					$scope.Dcome4 = 0
 					break
 				default:
@@ -547,12 +597,12 @@ function Dcome4(){
 			switch($scope.total){
 				case 5:
 					$scope.DcomeNumWinings = 0
-					$scope.outCome += 'you lost dont come bet on 5'
+					$scope.outCome.push( ('Lost '+$scope.Dcome5+' on number 5') )
 					$scope.Dcome5 = 0
 					break
 				case 7:
 					$scope.DcomeNumWinings = $scope.Dcome5*3
-					$scope.outCome += 'you won dont come bet on 5'
+					$scope.outCome.push( ('Won '+$scope.Dcome5*3+' on number 5') )
 					$scope.Dcome5 = 0
 					break
 				default:
@@ -566,12 +616,12 @@ function Dcome4(){
 			switch($scope.total){
 				case 6:
 					$scope.DcomeNumWinings = 0
-					$scope.outCome += 'you lost dont come bet on 6'
+					$scope.outCome.push( ('Lost '+$scope.Dcome6+' on number 6') )
 					$scope.Dcome6 = 0
 					break
 				case 7:
 					$scope.DcomeNumWinings = $scope.Dcome6*2
-					$scope.outCome += 'you won dont come bet on 6'
+					$scope.outCome.push( ('Won '+$scope.Dcome6*2+' on number 6') )
 					$scope.Dcome6 = 0
 				default:
 					//do nothing
@@ -584,12 +634,12 @@ function Dcome4(){
 			switch($scope.total){
 				case 8:
 					$scope.DcomeNumWinings = 0
-					$scope.outCome += 'you lost dont come bet on 8'
+					$scope.outCome.push( ('Lost '+$scope.Dcome8+' on number 8') )
 					$scope.Dcome8 = 0
 					break
 				case 7:
 					$scope.DcomeNumWinings = $scope.Dcome6*2
-					$scope.outCome += "you won dont come bet on 8"
+					$scope.outCome.push( ('Won '+$scope.Dcome8*2+' on number 8') )
 					$scope.Dcome8 = 0
 					break
 				default:
@@ -603,12 +653,12 @@ function Dcome4(){
 			switch($scope.total){
 				case 9:
 					$scope.DcomeNumWinings = 0
-					$scope.outCome += 'you lost dont come bet on 9'
+					$scope.outCome.push( ('Lost '+$scope.Dcome9+' on number 9') )
 					$scope.Dcome9 = 0
 					break
 				case 7:
 					$scope.DcomeNumWinings = $scope.Dcome9*3
-					$scope.outCome += 'you won dont come bet on 9'
+					$scope.outCome.push( ('Won '+$scope.Dcome9*3+' on number 9') )
 					$scope.Dcome9 = 0
 					break
 				default:
@@ -622,12 +672,12 @@ function Dcome4(){
 			switch($scope.total){
 				case 10:
 					$scope.DcomeNumWinings = 0
-					$scope.outCome += 'you lost dont come bet on 10'
+					$scope.outCome.push( ('Lost '+$scope.Dcome10+' on number 10') )
 					$scope.Dcome10 = 0
 					break
 				case 7:
 					$scope.DcomeNumWinings = $scope.Dcome10*4
-					$scope.outCome += 'you won dont come bet on 10'
+					$scope.outCome.push( ('Won '+$scope.Dcome10*4+' on number 10') )
 					$scope.Dcome10 = 0
 					break
 				default:
@@ -640,11 +690,11 @@ function Dcome4(){
 	function anyseven(){
 		if($scope.anySevenAmount > 0){
 			if($scope.total === 7){
-				$scope.outCome += 'you won on any 7 '
 				$scope.sevenWinings = $scope.anySevenAmount*4
+				$scope.outCome.push( ('Won '+$scope.sevenWinings+' on any 7') )
 				$scope.anySevenAmount = ''
 			} else {
-				$scope.outCome += 'you lost on any 7 '
+				$scope.outCome.push( ('Lost '+$scope.anySevenAmount+' on any 7') )
 				$scope.anySevenAmount = ''
 			}
 		}
@@ -652,11 +702,11 @@ function Dcome4(){
 	function anycraps(){
 		if($scope.anyCrapsAmount > 0){
 			if($scope.total === 2 || $scope.total === 3 || $scope.total === 12){
-				$scope.outCome += 'you won on any craps'
 				$scope.crapsWinings = $scope.anyCrapsAmount*7
+				$scope.outCome.push( ('Won '+$scope.crapsWinings+' on any craps') )
 				$scope.anyCrapsAmount = ''
 			} else {
-				$scope.outCome += 'you lost on any craps '
+				$scope.outCome.push( ( 'Lost '+$scope.anyCrapsAmount+' on any craps ') )
 				$scope.anyCrapsAmount = ''
 			}
 		}
@@ -666,11 +716,11 @@ function Dcome4(){
 			if($scope.total !== 7){
 				if($scope.die1 === 2 && $scope.die2 === 2){
 					$scope.h4winings = $scope.hardFourAmount*7
-					$scope.outCome += "you won on hard 4"
+					$scope.outCome.push( ("Won "+$scope.h4winings+" on hard 4") )
 					$scope.hardFourAmount = 0
 				}
 			} else {
-				$scope.outCome += 'you lost on hard 4'	
+				$scope.outCome.push( ('Lost '+$scope.hardFourAmount+' on hard 4') )	
 				$scope.hardFourAmount = 0
 			}
 		}
@@ -680,11 +730,11 @@ function Dcome4(){
 			if($scope.total !== 7){
 				if($scope.die1 === 3 && $scope.die2 === 3){
 					$scope.h6winings = $scope.hardSixAmount*9
-					$scope.outCome += 'you won on hard 6'
+					$scope.outCome.push( ('Won '+$scope.h6winings+' on hard 6') )
 					$scope.hardSixAmount = 0
 				}
 			} else {
-				$scope.outCome += 'you lost on hard 6'
+				$scope.outCome.push( ('Lost '+$scope.hardSixAmount+' on hard 6') )
 				$scope.hardSixAmount = 0
 			}
 		}
@@ -694,11 +744,11 @@ function Dcome4(){
 			if($scope.total !== 7) {
 				if($scope.die1 === 4 && $scope.die2 === 4){
 					$scope.h8winings = $scope.hardEightAmount*9
-					$scope.outCome += 'you won on hard 8'
+					$scope.outCome.push( ('Won '+$scope.h8winings+' on hard 8') )
 					$scope.hardEightAmount = 0
 				}
 			} else {
-				$scope.outCome += 'you lost on hard 8'
+				$scope.outCome.push( ('Lost '+$scope.hardEightAmount+' on hard 8') )
 				$scope.hardEightAmount = 0
 			}
 		}
@@ -708,11 +758,11 @@ function Dcome4(){
 			if($scope.total !== 7){
 				if($scope.die1 === 5 && $scope.die2 === 5){
 					$scope.h10winings = $scope.hardTenAmount*9
-					$scope.outCome += 'you won on hard 10'
+					$scope.outCome.push( ('Won '+$scope.h10winings+' on hard 10') )
 					$scope.hardTenAmount = 0
 				}
 			} else {
-				$scope.outCome += 'you lost on hard 10'
+				$scope.outCome.push( ('Lost '+$scope.hardTenAmount+' on hard Ten') )
 				$scope.hardTenAmount = 0
 			}
 		}
@@ -721,11 +771,11 @@ function Dcome4(){
 		if($scope.threeAmount > 0){
 			if($scope.total === 3){
 				$scope.threeWinings = $scope.threeAmount*15
-				$scope.outCome += "you won on any 3"
+				$scope.outCome.push( ("Won "+$scope.threeWinings+" on any Three") )
 				$scope.threeAmount = 0
 			} else {
+				$scope.outCome.push( ('Lost '+$scope.threeAmount+' on any Three') )
 				$scope.threeAmount = 0
-				$scope.outCome += 'you lost on any 3'
 			}
 		}
 	}
@@ -733,11 +783,11 @@ function Dcome4(){
 		if($scope.yoAmount > 0){
 			if($scope.total === 11){
 				$scope.yoWinings = $scope.yoAmount*15
-				$scope.outCome += "you won on any yo"
+				$scope.outCome.push( ("Won "+$scope.yoWinings+" on any Eleven") )
 				$scope.yoAmount = 0
 			} else {
+				$scope.outCome.push( ("Lost "+$scope.yoAmount+" on any Eleven") )
 				$scope.yoAmount = 0
-				$scope.outCome += "you lost on any yo"
 			}
 		}
 	}
@@ -745,10 +795,10 @@ function Dcome4(){
 		if($scope.twoAmount > 0){
 			if($scope.total === 2){
 				$scope.twoWinings = $scope.twoAmount*30
-				$scope.outCome += 'you won on any 2'
+				$scope.outCome.push( ('Won '+$scope.twoWinings+' on any two') )
 				$scope.twoAmount = 0
 			} else {
-				$scope.outCome = 'you lost on any 2'
+				$scope.outCome.push( ('Lost '+$scope.twoAmount+' on any two') )
 				$scope.twoAmount = 0
 			}
 		}
@@ -757,10 +807,10 @@ function Dcome4(){
 		if($scope.twelveAmount > 0){
 			if($scope.total === 12){
 				$scope.twelveWinings = $scope.twelveAmount*30
-				$scope.outCome += 'you won on any 12'
+				$scope.outCome.push( ('Won '+$scope.twelveWinings+' on any twelve') )
 				$scope.twelveAmount = 0
 			} else {
-				$scope.outCome += "you lost on any twelve"
+				$scope.outCome.push( ("Lost "+$scope.twelveAmount+" on any twelve") )
 				$scope.twelveAmount = 0
 			}
 		}
@@ -769,10 +819,10 @@ function Dcome4(){
 		if($scope.bigSixAmount > 0){
 			if($scope.total === 6){
 				$scope.BsixWinings = $scope.bigSixAmount*2
-				$scope.outCome += 'you won on big 6'
+				$scope.outCome.push( ('Won '+$scope.bigSixAmount+' on big 6') )
 				$scope.bigSixAmount = 0
 			} else {
-				$scope.outCome += 'you lost on big 6'
+				$scope.outCome.push( ('Lost '+$scope.bigSixAmount+' on big 6') )
 				$scope.bigSixAmount = 0
 			}
 		}
@@ -781,10 +831,10 @@ function Dcome4(){
 		if($scope.bigEightAmount > 0){
 			if($scope.total === 8){
 				$scope.BEightWinings = $scope.bigEightAmount*2
-				$scope.outCome += 'you won on big 8'
+				$scope.outCome.push( ('Won '+$scope.bigEightAmount+' on big 8') )
 				$scope.bigEightAmount = 0
 			} else {
-				$scope.outCome += 'you lost on big 8'
+				$scope.outCome.push( ('Lost '+$scope.bigEightAmount+' on big 8') )
 				$scope.bigEightAmount = 0
 			}
 		}
