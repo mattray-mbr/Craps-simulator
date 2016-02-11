@@ -1,9 +1,15 @@
 * {
 	box-sizing: border-box;
 }
+h2, h3, h4, h5, p, span {
+	font-family: Helvetica;
+}
+h1 {
+	margin-top: 0;
+}
 h3 {
 	margin: 0;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 h2 {
 	margin: 0;
@@ -22,14 +28,23 @@ button:active {
 	outline:0;
 	background-image: none;
 }
-body {
+.all-container {
 	background: url(images/skyline.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
+	margin: 0;
 }
 @media(max-width:1000px){
-	body {
+	.all-container {
 		background-size: cover;
+	}
+	.point-set {
+		font-size: 18px;
+	}
+}
+@media(max-width: 595px){
+	.point-set {
+		font-size: 14px;
 	}
 }
 .layout {
@@ -171,7 +186,7 @@ body {
 	margin-top: 20px;
 }
 .ui {
-	height: 350px;
+	min-height: 100px;
 	background-color: #dd9d19;
 	border:3px solid #a41;
 }
@@ -184,15 +199,10 @@ body {
 	color: #3af;
 }
 /* --------------- HUD -------------------------*/
-/*.money {
-	background-color: #a86;
+.money, .dice, .other {
+	min-height: 120px;
 }
-.dice {
-	background-color: #ebc;
-}
-.other {
-	background-color: #9fe;
-}*/
+
 
 
 

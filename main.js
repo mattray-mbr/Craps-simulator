@@ -1,6 +1,7 @@
 var app = angular.module('myApp', [])
-	app.controller('diceController', ['$scope', function($scope){
+	app.controller('mainController', ['$scope', '$timeout', function($scope, $timeout){
 	
+
 	$scope.playerTotal = 100
 	$scope.outCome = []
 
@@ -39,6 +40,12 @@ var app = angular.module('myApp', [])
 	$scope.Dcome8 = 0
 	$scope.Dcome9 = 0
 	$scope.Dcome10 = 0
+	$scope.buy4Winings = 0
+	$scope.buy5Winings = 0
+	$scope.buy6Winings = 0
+	$scope.buy8Winings = 0
+	$scope.buy9Winings = 0
+	$scope.buy10Winings = 0
 	$scope.comeNumWinings = 0
 	$scope.DcomeNumWinings = 0
 	$scope.comeWinings = 0
@@ -104,6 +111,12 @@ var app = angular.module('myApp', [])
 		come10()
 		come()
 		dontCome()
+		buy4()
+		buy5()
+		buy6()
+		buy8()
+		buy9()
+		buy10()
 		point()
 		gameState()
 		addWinings()
@@ -162,6 +175,24 @@ var app = angular.module('myApp', [])
 		if($scope.come10 < 1){
 			$scope.showChipC10 = false
 		}
+		if($scope.buy4Amount < 1){
+			$scope.showChipBuy4 = false
+		}
+		if($scope.buy5Amount < 1){
+			$scope.showChipBuy5 = false
+		}
+		if($scope.buy6Amount < 1){
+			$scope.showChipBuy6 = false
+		}
+		if($scope.buy8Amount < 1){
+			$scope.showChipBuy8 = false
+		}
+		if($scope.buy9Amount < 1){
+			$scope.showChipBuy9 = false
+		}
+		if($scope.buy10Amount < 1){
+			$scope.showChipBuy10 = false
+		}
 		$scope.showChipC = false
 		$scope.showChipDC = false
 		$scope.showChip7 = false
@@ -184,11 +215,47 @@ var app = angular.module('myApp', [])
 		$scope.playerTotal -= $scope.dontPassAmount
 		$scope.showChipDP = true
 	}
-	$scope.field = function(){
-		$scope.fieldAmount = prompt('bet amount?')
+
+
+
+
+	$scope.field1 = function(event){
 		$scope.playerTotal -= $scope.fieldAmount
 		$scope.showChipF = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
+
+
+
+
+
+
+	$scope.field = function(event){
+		// $scope.fieldAmount = prompt('bet amount?')
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0][0].focus();
+		})
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	$scope.comeBet = function(){
 		$scope.comeAmount = prompt('bet amount?')
 		$scope.playerTotal -= $scope.comeAmount
@@ -256,6 +323,36 @@ var app = angular.module('myApp', [])
 		$scope.dComeAmount = prompt('bet amount?')
 		$scope.playerTotal -= $scope.dComeAmount
 		$scope.showChipDC = true
+	}
+	$scope.buy4 = function(){
+		$scope.buy4Amount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.buy4Amount
+		$scope.showChipBuy4 = true
+	}
+	$scope.buy5 = function(){
+		$scope.buy5Amount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.buy5Amount
+		$scope.showChipBuy5 = true
+	}
+	$scope.buy6 = function(){
+		$scope.buy6Amount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.buy6Amount
+		$scope.showChipBuy6 = true
+	}
+	$scope.buy8 = function(){
+		$scope.buy8Amount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.buy8Amount
+		$scope.showChipBuy8 = true
+	}
+	$scope.buy9 = function(){
+		$scope.buy9Amount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.buy9Amount
+		$scope.showChipBuy9 = true
+	}
+	$scope.buy10 = function(){
+		$scope.buy10Amount = prompt('bet amount?')
+		$scope.playerTotal -= $scope.buy10Amount
+		$scope.showChipBuy10 = true
 	}
 //--------------- calc odds and payout functions -------------------
 	function diceImg1(){
@@ -360,7 +457,7 @@ var app = angular.module('myApp', [])
 	}
 	function field(){
 		if($scope.fieldAmount > 0) {
-			if($scope.total === 3 || $scope.total === 4 || $scope.total === 9 || $scope.total === 10){
+			if($scope.total === 3 || $scope.total === 4 || $scope.total === 9 || $scope.total === 10 || $scope.total === 11){
 				$scope.Fwinings = $scope.fieldAmount*2
 				$scope.outCome.push( ('Won '+$scope.fieldAmount+' on field') )
 				$scope.fieldAmount = ''
@@ -839,8 +936,80 @@ function Dcome4(){
 			}
 		}
 	}
+	function buy4(){
+		if($scope.buy4Amount >= 1){
+			if($scope.total === 4){
+				$scope.buy4Winings = $scope.buy4Amount*4
+				$scope.outCome.push( ('Won '+$scope.buy4Amount*3+' on buy 4'))
+				$scope.buy4Amount = 0
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.buy4Amount+' on buy 4'))
+				$scope.buy4Amount = 0
+			}
+		}
+	}
+	function buy5(){
+		if($scope.buy5Amount >=1){
+			if($scope.total === 5){
+				$scope.buy5Winings = $scope.buy5Amount*2
+				$scope.outCome.push( ('Won '+$scope.buy5Amount*3+' on buy 5'))
+				$scope.buy5Amount = 0
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.buy5Amount+' on buy 5'))
+				$scope.buy5Amount = 0
+			} 
+		}
+	}
+	function buy6(){
+		if($scope.buy6Amount >= 1){
+			if($scope.total === 6){
+				$scope.buy6Winings = $scope.buy6Amount*2
+				$scope.outCome.push( ('Won '+$scope.buy6Amount+' on buy 6'))
+				$scope.buy6Amount = 0
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.buy6Amount+' on buy 6'))
+				$scope.buy6Amount = 0
+			} 
+		}
+	}
+	function buy8(){
+		if($scope.buy8Amount >= 1){
+			if($scope.total === 8){
+				$scope.buy8Winings = $scope.buy8Amount*2
+				$scope.outCome.push( ('Won '+$scope.buy8Amount+' on buy 8'))
+				$scope.buy8Amount = 0
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.buy8Amount+' on buy 8'))
+				$scope.buy8Amount = 0
+			} 
+		}
+	}
+	function buy9(){
+		if($scope.buy9Amount >= 1){
+			if($scope.total === 9){
+				$scope.buy9Winings = $scope.buy9Amount*3
+				$scope.outCome.push( ('Won '+$scope.buy9Amount*3+' on buy 9'))
+				$scope.buy9Amount = 0
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.buy9Amount+' on buy 9'))
+				$scope.buy9Amount = 0
+			} 
+		}
+	}
+	function buy10(){
+		if($scope.buy10Amount >= 1){
+			if($scope.total === 10){
+				$scope.buy10Winings = $scope.buy10Amount*4
+				$scope.outCome.push( ('Won '+$scope.buy10Amount*3+' on buy 10'))
+				$scope.buy10Amount = 0
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.buy10Amount+' on buy 10'))
+				$scope.buy10Amount = 0
+			} 
+		}
+	}
 	function addWinings() {
-		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings+$scope.comeNumWinings+$scope.comeWinings+$scope.DcomeNumWinings+$scope.dontComeWinings
+		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings+$scope.comeNumWinings+$scope.comeWinings+$scope.DcomeNumWinings+$scope.dontComeWinings+$scope.buy4Winings+$scope.buy5Winings+$scope.buy6Winings+$scope.buy8Winings+$scope.buy9Winings+$scope.buy10Winings
 		$scope.playerTotal += $scope.totalWinings
 		$scope.totalWinings = 0
 		$scope.Fwinings = 0
@@ -862,6 +1031,12 @@ function Dcome4(){
 		$scope.comeWinings = 0
 		$scope.DcomeNumWinings = 0
 		$scope.dontComeWinings = 0
+		$scope.buy4Winings = 0
+		$scope.buy5Winings = 0
+		$scope.buy6Winings = 0
+		$scope.buy8Winings = 0
+		$scope.buy9Winings = 0
+		$scope.buy10Winings = 0
 	}
 	function point(){
 		if($scope.point < 1){
