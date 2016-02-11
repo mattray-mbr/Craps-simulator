@@ -29,7 +29,11 @@
 		</div>
 		<div class="row">
 			<!-- <div class="col-xs-2 square placeB"></div> -->
-			<button id="dc" class="col-xs-3 square placeB" ng-disabled="comeout" ng-class="invalid" ng-click="dontCome()"><div class="circle" ng-show="showChipDC">{{dComeAmount}}</div></button>
+			<button id="dc" class="col-xs-3 square placeB" ng-disabled="comeout" ng-class="invalid" ng-click="click($event); dComeClick = true">
+				<form ng-submit="dontComeForm($event)">
+					<input type="text" ng-show="dComeClick" ng-model="dComeAmount" ng-blur="dComeClick = false">
+				</form>
+			<div class="circle" ng-show="showChipDC">{{dComeAmount}}</div></button>
 			<div class="col-xs-8 square placeB">
 				<div class="container-fluid">
 					<div class="row">
@@ -44,12 +48,36 @@
 						<div id="Pten" class="col-xs-2 square placeT"><div class="circle" ng-show="showChipC10">{{come10}}</div></div>
 					</div>
 					<div class="row">
-						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="buy4()"><div class="circle" ng-show="showChipBuy4">{{buy4Amount}}</div></button>
-						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="buy5()"><div class="circle" ng-show="showChipBuy5">{{buy5Amount}}</div></button>
-						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="buy6()"><div class="circle" ng-show="showChipBuy6">{{buy6Amount}}</div></button>
-						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="buy8()"><div class="circle" ng-show="showChipBuy8">{{buy8Amount}}</div></button>
-						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="buy9()"><div class="circle" ng-show="showChipBuy9">{{buy9Amount}}</div></button>
-						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="buy10()"><div class="circle" ng-show="showChipBuy10">{{buy10Amount}}</div></button>
+						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); buy4Click = true">
+							<form ng-submit="buy4Form($event)">
+								<input type="text" ng-model="buy4Amount" ng-show="buy4Click" ng-blur="buy4Click = false">
+							</form>
+						<div class="circle" ng-show="showChipBuy4">{{buy4Amount}}</div></button>
+						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); buy5Click = true">
+							<form ng-submit="buy5Form($event)">
+								<input type="text" ng-show="buy5Click" ng-model="buy5Amount" ng-blur="buy5Click = false">
+							</form>
+						<div class="circle" ng-show="showChipBuy5">{{buy5Amount}}</div></button>
+						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); buy6Click = true">
+							<form ng-submit="buy6Form($event)">
+								<input type="text" ng-show="buy6Click" ng-model="buy6Amount" ng-blur="buy6Click = false">
+							</form>
+						<div class="circle" ng-show="showChipBuy6">{{buy6Amount}}</div></button>
+						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); buy8Click = true">
+							<form ng-submit="buy8Form($event)">
+								<input type="text" ng-show="buy8Click" ng-model="buy8Amount" ng-blur="buy8Click = false">
+							</form>
+						<div class="circle" ng-show="showChipBuy8">{{buy8Amount}}</div></button>
+						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); buy9Click = true">
+							<form ng-submit="buy9Form($event)">
+								<input type="text" ng-show="buy9Click" ng-model="buy9Amount" ng-blur="buy9Click = false">
+							</form>
+						<div class="circle" ng-show="showChipBuy9">{{buy9Amount}}</div></button>
+						<button class="col-xs-2 square placeA blank" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); buy10Click = true">
+							<form ng-submit="buy10Form($event)">
+								<input type="text" ng-show="buy10Click" ng-model="buy10Amount" ng-blur="buy10Click = false">
+							</form>
+						<div class="circle" ng-show="showChipBuy10">{{buy10Amount}}</div></button>
 					</div>
 				</div>
 			</div>
@@ -60,30 +88,58 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div id="p-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
-						<button id="passv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="passLine()" ng-class="valid"></button>
+						<button id="passv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="click($event); passVertClick = true" ng-class="valid">
+							<form ng-submit="passForm($event)">
+								<input type="text" ng-show="passVertClick" ng-model="passAmount" ng-blur="passVertClick = false">
+							</form>
+						</button>
 						<div id="d-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
-						<button id="dpv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="dontPass()" ng-class="valid"></button>
+						<button id="dpv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="click($event); dontpassVertClick = true" ng-class="valid">
+							<form ng-submit="dontPassForm($event)">
+								<input type="text" ng-show="dontpassVertClick" ng-model="dontPassAmount" ng-blur="dontpassVertClick = false">
+							</form>
+						</button>
 					</div>
 					<div class="row">
-						<div id="big68" class="col-xs-12 square six-8 valid" ng-click="bigSix()"></div>
+						<div id="big68" class="six-8 square">
+							<button id="bigSix" class="col-xs-6 valid six-8" ng-click="click($event); bigSixClick = true">
+								<form ng-submit="bigSixForm($event)">
+									<input type="text" ng-show="bigSixClick" ng-model="bigSixAmount" ng-blur="bigSixClick = false">
+								</form>
+								<div class="circle" ng-show="showChipBig6">{{bigSixAmount}}</div>
+							</button>
+							<button id="bigEight" class="col-xs-6 valid six-8" ng-click="click($event); bigEightClick = true">
+								<form ng-submit="bigEightForm($event)">
+									<input type="text" ng-show="bigEightClick" ng-model="bigEightAmount" ng-blur="bigEightClick = false">
+								</form>
+								<div class="circle" ng-show="showChipBig8">{{bigEightAmount}}</div>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 square allB">
 				<div class="container-fluid">
 					<div class="row">
-						<button id="co" class="col-xs-12 square placeM" ng-disabled="comeout" ng-click="comeBet()" ng-class="invalid">
-						<div class="circle" ng-show="showChipC">{{comeAmount}}</div></button>
+						<button id="co" class="col-xs-12 square placeM" ng-disabled="comeout" ng-click="click($event); comeClick = true" ng-class="invalid" >
+							<form ng-submit="comeForm($event)">
+								<input type="text" ng-show="comeClick" ng-model="comeAmount" ng-blur="comeClick = false">
+							</form>
+							<div class="circle" ng-show="showChipC">{{comeAmount}}</div>
+						</button>
 					</div>
 					<div class="row">
-						<button id="Fie" class="col-xs-12 square placeM valid" ng-click=" field($event); fieldClick = true">
-						<form ng-submit="field1($event)">
+						<button id="Fie" class="col-xs-12 square placeM valid" ng-click=" click($event); fieldClick = true">
+						<form ng-submit="fieldForm($event)">
 							<input type="text" ng-show="fieldClick" ng-model="fieldAmount" ng-blur="fieldClick = false">
 						</form>
 						<div class="circle" ng-show="showChipF">{{fieldAmount}}</div></button>
 					</div>
 					<div class="row">
-						<button id="dph" class="col-xs-12 square placeF" ng-click="dontPass()" ng-disabled="pointSet" ng-class="valid">
+						<button id="dph" class="col-xs-12 square placeF" ng-click="click($event); dontpassClick = true" ng-disabled="pointSet" ng-class="valid">
+						<form ng-submit="dontPassForm($event)">
+							<input type="text" ng-model="dontPassAmount" ng-show="dontpassClick" ng-blur="dontpassClick = false">
+						</form>
 							<div class="circle" ng-show="showChipDP">{{dontPassAmount}}</div>
 						</button>
 					</div>
@@ -91,37 +147,86 @@
 						<div id="oddsDP" class="col-xs-12 square placeG" ng-class="invalid" ng-disabled="comeout"></div>
 					</div>
 					<div class="row">
-						<button id="passh" class="col-xs-12 square placeF" ng-click="passLine()" ng-disabled="pointSet" ng-class="valid">
+						<button id="passh" class="col-xs-12 square placeF" ng-click="click($event); passClick = true" ng-disabled="pointSet" ng-class="valid">
+						<form ng-submit="passForm($event)">
+							<input type="text" ng-show="passClick" ng-model="passAmount" ng-blur="passClick = false">
+						</form>
 						<div class="circle" ng-show="showChipP">{{passAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div id="oddsP" class="col-xs-12 square placeG" ng-class="invalid"></div>
+						<button id="oddsP" class="col-xs-12 square placeG" ng-disabled="comeout" ng-class="invalid" ng-click="click($event); oddsPassClick = true">
+							<form ng-submit="oddsPassForm($event)">
+								<input type="text" ng-show="oddsPassClick" ng-model="oddsPassAmount" ng-blur="oddsPassClick = false">
+							</form>
+							<div class="circle odds-circle" ng-show="showChipPassOdds">{{oddsPassAmount}}</div>
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-4  allB">
 				<div class="container-fluid">
 					<div class="row">
-						<div id="anySeven" class="col-xs-10 col-xs-offset-1 square propsAa valid" ng-click="anySeven()"><div class="circle" ng-show="showChip7">{{anySevenAmount}}</div></div>
+						<button id="anySeven" class="col-xs-10 col-xs-offset-1 square propsAa valid" ng-click="click($event); anySevenClick = true">
+							<form ng-submit="anySevenForm($event)">
+								<input type="text" ng-show="anySevenClick" ng-model="anySevenAmount" ng-blur="anySevenClick = false">
+							</form>
+						<div class="circle" ng-show="showChip7">{{anySevenAmount}}</div></button>
 					</div>
 					<div class="row">
-						<button id="Hfour" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardFour()" ng-class="invalid"><div class="circle" ng-show="showChipH4">{{hardFourAmount}}</div></button>
-						<button id="Hten" class="col-xs-5 square propsA" ng-disabled="comeout" ng-click="hardTen()" ng-class="invalid"><div class="circle" ng-show="showChipH10">{{hardTenAmount}}</div></button>
+						<button id="Hfour" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="click($event); hardFourClick = true" ng-class="invalid">
+							<form ng-submit="hardFourForm($event)">
+								<input type="text" ng-show="hardFourClick" ng-model="hardFourAmount" ng-blur="hardFourClick = false">
+							</form>
+						<div class="circle" ng-show="showChipH4">{{hardFourAmount}}</div></button>
+						<button id="Hten" class="col-xs-5 square propsA" ng-disabled="comeout" ng-click="click($event); hardTenClick = true" ng-class="invalid">
+							<form ng-submit="hardTenForm($event)">
+								<input type="text" ng-show="hardTenClick" ng-model="hardTenAmount" ng-blur="hardTenClick = false">
+							</form>
+						<div class="circle" ng-show="showChipH10">{{hardTenAmount}}</div></button>
 					</div>
 					<div class="row">
-						<button id="Hsix" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="hardSix()" ng-class="invalid"><div class="circle" ng-show="showChipH6">{{hardSixAmount}}</div></button>
-						<button id="Height" class="col-xs-5 square propsA" ng-click="hardEight()" ng-class="invalid" ng-disabled="comeout"><div class="circle" ng-show="showChipH8">{{hardEightAmount}}</div></button>
+						<button id="Hsix" class="col-xs-5 col-xs-offset-1 square propsA" ng-disabled="comeout" ng-click="click($event); hardSixClick = true" ng-class="invalid">
+							<form ng-submit="hardSixForm($event)">
+								<input type="text" ng-show="hardSixClick" ng-model="hardSixAmount" ng-blur="hardSixClick = false">
+							</form>
+						<div class="circle" ng-show="showChipH6">{{hardSixAmount}}</div></button>
+						<button id="Height" class="col-xs-5 square propsA" ng-click="click($event); hardEightClick = true" ng-class="invalid" ng-disabled="comeout">
+							<form ng-submit="hardEightForm($event)">
+								<input type="text" ng-show="hardEightClick" ng-model="hardEightAmount" ng-blur="hardEightClick = false">
+							</form>
+						<div class="circle" ng-show="showChipH8">{{hardEightAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div id="Zthree" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyThree()"><div class="circle" ng-show="showChip3">{{threeAmount}}</div></div>
-						<div id="Yo" class="col-xs-5 square propsA valid" ng-click="anyYo()"><div class="circle" ng-show="showChip11">{{yoAmount}}</div></div>
+						<button id="Zthree" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="click($event); anyThreeClick = true">
+							<form ng-submit="anyThreeForm($event)">
+								<input type="text" ng-show="anyThreeClick" ng-model="threeAmount" ng-blur="anyThreeClick = false">
+							</form>
+						<div class="circle" ng-show="showChip3">{{threeAmount}}</div></button>
+						<button id="Yo" class="col-xs-5 square propsA valid" ng-click="click($event); anyYoClick = true">
+							<form ng-submit="anyYoForm($event)">
+								<input type="text" ng-show="anyYoClick" ng-model="yoAmount"
+								ng-blur="anyYoClick = false">
+							</form>
+						<div class="circle" ng-show="showChip11">{{yoAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div id="Ztwo" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="anyTwo()"><div class="circle" ng-show="showChip2">{{twoAmount}}</div></div>
-						<div id="Ztwelve" class="col-xs-5 square propsA valid" ng-click="anyTwelve()"><div class="circle" ng-show="showChip12">{{twelveAmount}}</div></div>
+						<button id="Ztwo" class="col-xs-5 col-xs-offset-1 square propsA valid" ng-click="click($event); anyTwoClick = true">
+							<form ng-submit="anyTwoForm($event)">
+								<input type="text" ng-show="anyTwoClick" ng-model="twoAmount" ng-blur="anyTwoClick = false">
+							</form>
+						<div class="circle" ng-show="showChip2">{{twoAmount}}</div></button>
+						<button id="Ztwelve" class="col-xs-5 square propsA valid" ng-click="click($event); anyTwelveClick = true">
+							<form ng-submit="anyTwelveForm($event)">
+								<input type="text" ng-show="anyTwelveClick" ng-model="twelveAmount" ng-blur="anyTwelveClick = false">
+							</form>
+						<div class="circle" ng-show="showChip12">{{twelveAmount}}</div></button>
 					</div>
 					<div class="row">
-						<div id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsAa valid" ng-click="anyCraps()"><div class="circle" ng-show="showChipCraps">{{anyCrapsAmount}}</div></div>
+						<button id="anyCraps" class="col-xs-10 col-xs-offset-1 square propsAa valid" ng-click="click($event); anyCrapsClick = true">
+							<form ng-submit="anyCrapsForm($event)">
+								<input type="text" ng-show="anyCrapsClick" ng-model="anyCrapsAmount" ng-blur="anyCrapsClick = false">
+							</form>
+						<div class="circle" ng-show="showChipCraps">{{anyCrapsAmount}}</div></button>
 					</div>
 				</div>
 			</div>
@@ -135,8 +240,9 @@
 			<h3>last Winings: {{totalWinings | currency}}</h3>
 		</div>
 		<div class="ui dice col-xs-12 col-md-4">
-			<h4 class="pull-left">{{die1}}<div ng-class="dieSelect" class="dicePic"></div></h4>
-			<h4 class="pull-left">{{die2}}<div ng-class="dieSelect2" class="dicePic"></div></h4>
+			<h4 class="pull-left"><div ng-class="dieSelect" class="dicePic"></div></h4>
+			<h4 class="pull-left"><div ng-class="dieSelect2" class="dicePic"></div></h4>
+			<h4 class="pull-left">{{total}}</h4>
 			<button class="roll btn btn-danger btn-lg" ng-click="diceRoll()">Roll Dice</button>
 		</div>
 		<div class="ui other col-xs-12 col-md-4">

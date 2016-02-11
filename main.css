@@ -19,6 +19,9 @@ li {
 	font-size: 20px;
 	color: #fff;
 }
+input {
+	width: 30px;
+}
 button {
 	list-style: none;
 	background-color: #fff;
@@ -60,12 +63,16 @@ button:active {
 	border: 1px solid black;
 	padding: 0;
 }
+.roll {
+	margin-top: 20px;
+}
 .dicePic {
 	width: 64px;
 	height: 62px;
 	border: 1px solid black;
 	background: url(images/DiceSheet.png)-1px -3px;
 	border-radius: 5px;
+	margin: 10px;
 }
 .die1 {
 	background: url(images/DiceSheet.png)-1px -3px;
@@ -100,6 +107,11 @@ button:active {
 	background: url(images/chip.png);
 	padding-top:10px;
 	text-align: center;
+	position: relative;
+	z-index:10;
+}
+.odds-circle {
+	margin-left: 30px;
 }
 .invalid:hover {
 	border: 5px solid rgba(255, 51,51, .6);
@@ -254,6 +266,10 @@ button:active {
 .six-8 {
 	height: 100px;
 }
+#bigSix, #bigEight {
+	background-color: transparent;
+}
+
 .blank {
 	background: url(images/test.jpg);
 	background-repeat: no-repeat;

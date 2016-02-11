@@ -12,7 +12,7 @@ var app = angular.module('myApp', [])
 	$scope.comeout = true
 	$scope.pointSet = false
 	$scope.comeAmount = ''
-	$scope.dComeAmount = 0
+	$scope.dComeAmount = ''
 	$scope.Fwinings = 0
 	$scope.Pwinings = 0
 	$scope.DPwinings = 0
@@ -50,6 +50,7 @@ var app = angular.module('myApp', [])
 	$scope.DcomeNumWinings = 0
 	$scope.comeWinings = 0
 	$scope.dontComeWinings = 0
+	$scope.oddsPassWinings = 0
 	$scope.totalWinings
 	$scope.valid = "valid"
  	$scope.invalid = "invalid"
@@ -82,7 +83,6 @@ var app = angular.module('myApp', [])
 		//rolls
 		diceImg1()
 		diceImg2()
-		passLineRoll()
 		dontPassLineRoll()
 		field()
 		anyseven()
@@ -97,6 +97,8 @@ var app = angular.module('myApp', [])
 		twelve()
 		bigSix()
 		bigEight()
+		oddsPass()
+		passLineRoll()
 		Dcome4()
 		Dcome5()
 		Dcome6()
@@ -120,6 +122,7 @@ var app = angular.module('myApp', [])
 		point()
 		gameState()
 		addWinings()
+
 		$scope.showChipF = false
 		if($scope.passAmount < 1){
 			$scope.showChipP = false
@@ -193,6 +196,15 @@ var app = angular.module('myApp', [])
 		if($scope.buy10Amount < 1){
 			$scope.showChipBuy10 = false
 		}
+		if($scope.bigSixAmount < 1){
+			$scope.showChipBig6 = false
+		}
+		if($scope.bigEightAmount < 1){
+			$scope.showChipBig8 = false
+		}
+		if($scope.oddsPassAmount < 1){
+			$scope.showChipPassOdds = false
+		}
 		$scope.showChipC = false
 		$scope.showChipDC = false
 		$scope.showChip7 = false
@@ -202,39 +214,8 @@ var app = angular.module('myApp', [])
 		$scope.showChip11 = false
 		$scope.showChip3 = false
 	}
-	
-
-
-	$scope.passLine = function(){
-		$scope.passAmount = prompt('bet amount?')
-		$scope.playerTotal -= $scope.passAmount
-		$scope.showChipP = true
-	}
-	$scope.dontPass = function(){
-		$scope.dontPassAmount = prompt('bet amount?')
-		$scope.playerTotal -= $scope.dontPassAmount
-		$scope.showChipDP = true
-	}
-
-
-
-
-	$scope.field1 = function(event){
-		$scope.playerTotal -= $scope.fieldAmount
-		$scope.showChipF = true
-		$timeout(function(){
-			event.stopPropagation()
-			event.target.children[0].blur();
-		})
-	}
-
-
-
-
-
-
-	$scope.field = function(event){
-		// $scope.fieldAmount = prompt('bet amount?')
+	//focus on input field for click events
+	$scope.click = function(event){
 		$timeout(function(){
 			event.stopPropagation()
 			event.target.children[0][0].focus();
@@ -242,117 +223,198 @@ var app = angular.module('myApp', [])
 		
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	$scope.comeBet = function(){
-		$scope.comeAmount = prompt('bet amount?')
+	//all form submissions
+	$scope.passForm = function(event){
+		$scope.playerTotal -= $scope.passAmount
+		$scope.showChipP = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
+	}
+	$scope.dontPassForm = function(event){
+		$scope.playerTotal -= $scope.dontPassAmount
+		$scope.showChipDP = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
+	}
+	$scope.fieldForm = function(event){
+		$scope.playerTotal -= $scope.fieldAmount
+		$scope.showChipF = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
+	}
+	$scope.comeForm = function(event){
 		$scope.playerTotal -= $scope.comeAmount
 		$scope.showChipC = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.anySeven = function(){
-		$scope.anySevenAmount = prompt('bet amount?')
+	$scope.anySevenForm = function(event){
 		$scope.playerTotal -= $scope.anySevenAmount
 		$scope.showChip7 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.anyCraps = function(){
-		$scope.anyCrapsAmount = prompt('bet amount?')
+	$scope.anyCrapsForm = function(event){
 		$scope.playerTotal -= $scope.anyCrapsAmount
 		$scope.showChipCraps = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.hardFour = function(){
-		$scope.hardFourAmount = prompt('bet amount?')
+	$scope.hardFourForm = function(event){
 		$scope.playerTotal -= $scope.hardFourAmount
 		$scope.showChipH4 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.hardSix = function(){
-		$scope.hardSixAmount = prompt('bet amount?')
+	$scope.hardSixForm = function(event){
 		$scope.playerTotal -= $scope.hardSixAmount
 		$scope.showChipH6 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.hardEight = function(){
-		$scope.hardEightAmount = prompt('bet amount?')
+	$scope.hardEightForm = function(event){
 		$scope.playerTotal -= $scope.hardEightAmount
 		$scope.showChipH8 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.hardTen = function(){
-		$scope.hardTenAmount = prompt('bet amount?')
+	$scope.hardTenForm = function(event){
 		$scope.playerTotal -= $scope.hardTenAmount
 		$scope.showChipH10 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.anyThree = function(){
-		$scope.threeAmount = prompt('bet amount?')
+	$scope.anyThreeForm = function(event){
 		$scope.playerTotal -= $scope.threeAmount
 		$scope.showChip3 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.anyYo = function(){
-		$scope.yoAmount = prompt('bet amount?')
+	$scope.anyYoForm = function(event){
 		$scope.playerTotal -= $scope.yoAmount
 		$scope.showChip11 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.anyTwo = function(){
-		$scope.twoAmount = prompt('bet amount?')
+	$scope.anyTwoForm = function(event){
 		$scope.playerTotal -= $scope.twoAmount
 		$scope.showChip2 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.anyTwelve = function(){
-		$scope.twelveAmount = prompt('bet amount?')
+	$scope.anyTwelveForm = function(event){
 		$scope.playerTotal -= $scope.twelveAmount
 		$scope.showChip12 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.bigSix = function(){
-		$scope.bigSixAmount = prompt('bet amount?')
+	$scope.bigSixForm = function(event){
 		$scope.playerTotal -= $scope.bigSixAmount
+		$scope.showChipBig6 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.bigEight = function(){
-		$scope.bigEightAmount = prompt('bet amount?')
+	$scope.bigEightForm = function(event){
 		$scope.playerTotal -= $scope.bigEightAmount
+		$scope.showChipBig8 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.dontCome = function(){
-		$scope.dComeAmount = prompt('bet amount?')
+	$scope.dontComeForm = function(event){
 		$scope.playerTotal -= $scope.dComeAmount
 		$scope.showChipDC = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.buy4 = function(){
-		$scope.buy4Amount = prompt('bet amount?')
+	$scope.buy4Form = function(event){
 		$scope.playerTotal -= $scope.buy4Amount
 		$scope.showChipBuy4 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.buy5 = function(){
-		$scope.buy5Amount = prompt('bet amount?')
+	$scope.buy5Form = function(event){
 		$scope.playerTotal -= $scope.buy5Amount
 		$scope.showChipBuy5 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.buy6 = function(){
-		$scope.buy6Amount = prompt('bet amount?')
+	$scope.buy6Form = function(event){
 		$scope.playerTotal -= $scope.buy6Amount
 		$scope.showChipBuy6 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.buy8 = function(){
-		$scope.buy8Amount = prompt('bet amount?')
+	$scope.buy8Form = function(event){
 		$scope.playerTotal -= $scope.buy8Amount
 		$scope.showChipBuy8 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.buy9 = function(){
-		$scope.buy9Amount = prompt('bet amount?')
+	$scope.buy9Form = function(event){
 		$scope.playerTotal -= $scope.buy9Amount
 		$scope.showChipBuy9 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
-	$scope.buy10 = function(){
-		$scope.buy10Amount = prompt('bet amount?')
+	$scope.buy10Form = function(event){
 		$scope.playerTotal -= $scope.buy10Amount
 		$scope.showChipBuy10 = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
+	}
+	$scope.oddsPassForm = function(event){
+		$scope.playerTotal -= $scope.oddsPassAmount
+		$scope.showChipPassOdds = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
 	}
 //--------------- calc odds and payout functions -------------------
 	function diceImg1(){
@@ -427,6 +489,18 @@ var app = angular.module('myApp', [])
 			}
 		}
 	}
+	function oddsPass(){
+		if($scope.oddsPassAmount > 0){
+			if($scope.total === $scope.point){
+				$scope.oddsPassWinings = $scope.oddsPassAmount*2
+				$scope.outCome.push( ('Won '+$scope.oddsPassAmount+' on pass odds'))
+				$scope.oddsPassAmount = ''
+			} else if($scope.total === 7){
+				$scope.outCome.push( ('Lost '+$scope.oddsPassAmount+' on pass odds'))
+				$scope.oddsPassAmount = ''
+			}
+		}
+	}
 	function dontPassLineRoll(){
 		if($scope.dontPassAmount > 0 && $scope.point < 1) {
 			if($scope.total === 2 || $scope.total === 3){
@@ -434,13 +508,15 @@ var app = angular.module('myApp', [])
 				$scope.outCome.push( ('Won '+$scope.dontPassAmount+' on dont pass line') )
 				$scope.dontPassAmount = ''
 			} else if($scope.total === 12){
-				$scope.outCome.push( ('Push on dont pass line12') )
-				$scope.playerTotal += $scope.dontPassAmount
+				$scope.outCome.push( ('Push dont pass on 12') )
+				$scope.DPwinings = $scope.dontPassAmount
+				console.log($scope.DPwinings)
+				console.log($scope.dontPassAmount)
 				$scope.dontPassAmount = ''
 			} else if($scope.total === 7 || $scope.total === 11){
 				$scope.DPwinings = 0
 				$scope.outCome.push( ('Lost '+$scope.dontPassAmount+' on dont pass line') )
-				$scope.dontPassAmount = 0
+				$scope.dontPassAmount = ''
 			} else {
 				console.log('point established, dont pass bet stays')
 			}
@@ -814,11 +890,11 @@ function Dcome4(){
 				if($scope.die1 === 2 && $scope.die2 === 2){
 					$scope.h4winings = $scope.hardFourAmount*7
 					$scope.outCome.push( ("Won "+$scope.h4winings+" on hard 4") )
-					$scope.hardFourAmount = 0
+					$scope.hardFourAmount = ''
 				}
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.hardFourAmount+' on hard 4') )	
-				$scope.hardFourAmount = 0
+				$scope.hardFourAmount = ''
 			}
 		}
 	}
@@ -828,11 +904,11 @@ function Dcome4(){
 				if($scope.die1 === 3 && $scope.die2 === 3){
 					$scope.h6winings = $scope.hardSixAmount*9
 					$scope.outCome.push( ('Won '+$scope.h6winings+' on hard 6') )
-					$scope.hardSixAmount = 0
+					$scope.hardSixAmount = ''
 				}
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.hardSixAmount+' on hard 6') )
-				$scope.hardSixAmount = 0
+				$scope.hardSixAmount = ''
 			}
 		}
 	}
@@ -842,11 +918,11 @@ function Dcome4(){
 				if($scope.die1 === 4 && $scope.die2 === 4){
 					$scope.h8winings = $scope.hardEightAmount*9
 					$scope.outCome.push( ('Won '+$scope.h8winings+' on hard 8') )
-					$scope.hardEightAmount = 0
+					$scope.hardEightAmount = ''
 				}
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.hardEightAmount+' on hard 8') )
-				$scope.hardEightAmount = 0
+				$scope.hardEightAmount = ''
 			}
 		}
 	}
@@ -856,11 +932,11 @@ function Dcome4(){
 				if($scope.die1 === 5 && $scope.die2 === 5){
 					$scope.h10winings = $scope.hardTenAmount*9
 					$scope.outCome.push( ('Won '+$scope.h10winings+' on hard 10') )
-					$scope.hardTenAmount = 0
+					$scope.hardTenAmount = ''
 				}
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.hardTenAmount+' on hard Ten') )
-				$scope.hardTenAmount = 0
+				$scope.hardTenAmount = ''
 			}
 		}
 	}
@@ -869,10 +945,10 @@ function Dcome4(){
 			if($scope.total === 3){
 				$scope.threeWinings = $scope.threeAmount*15
 				$scope.outCome.push( ("Won "+$scope.threeWinings+" on any Three") )
-				$scope.threeAmount = 0
+				$scope.threeAmount = ''
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.threeAmount+' on any Three') )
-				$scope.threeAmount = 0
+				$scope.threeAmount = ''
 			}
 		}
 	}
@@ -881,10 +957,10 @@ function Dcome4(){
 			if($scope.total === 11){
 				$scope.yoWinings = $scope.yoAmount*15
 				$scope.outCome.push( ("Won "+$scope.yoWinings+" on any Eleven") )
-				$scope.yoAmount = 0
+				$scope.yoAmount = ''
 			} else {
 				$scope.outCome.push( ("Lost "+$scope.yoAmount+" on any Eleven") )
-				$scope.yoAmount = 0
+				$scope.yoAmount = ''
 			}
 		}
 	}
@@ -893,10 +969,10 @@ function Dcome4(){
 			if($scope.total === 2){
 				$scope.twoWinings = $scope.twoAmount*30
 				$scope.outCome.push( ('Won '+$scope.twoWinings+' on any two') )
-				$scope.twoAmount = 0
+				$scope.twoAmount = ''
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.twoAmount+' on any two') )
-				$scope.twoAmount = 0
+				$scope.twoAmount = ''
 			}
 		}
 	}
@@ -905,10 +981,10 @@ function Dcome4(){
 			if($scope.total === 12){
 				$scope.twelveWinings = $scope.twelveAmount*30
 				$scope.outCome.push( ('Won '+$scope.twelveWinings+' on any twelve') )
-				$scope.twelveAmount = 0
+				$scope.twelveAmount = ''
 			} else {
 				$scope.outCome.push( ("Lost "+$scope.twelveAmount+" on any twelve") )
-				$scope.twelveAmount = 0
+				$scope.twelveAmount = ''
 			}
 		}
 	}
@@ -917,10 +993,10 @@ function Dcome4(){
 			if($scope.total === 6){
 				$scope.BsixWinings = $scope.bigSixAmount*2
 				$scope.outCome.push( ('Won '+$scope.bigSixAmount+' on big 6') )
-				$scope.bigSixAmount = 0
+				$scope.bigSixAmount = ''
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.bigSixAmount+' on big 6') )
-				$scope.bigSixAmount = 0
+				$scope.bigSixAmount = ''
 			}
 		}
 	}
@@ -929,10 +1005,10 @@ function Dcome4(){
 			if($scope.total === 8){
 				$scope.BEightWinings = $scope.bigEightAmount*2
 				$scope.outCome.push( ('Won '+$scope.bigEightAmount+' on big 8') )
-				$scope.bigEightAmount = 0
+				$scope.bigEightAmount = ''
 			} else {
 				$scope.outCome.push( ('Lost '+$scope.bigEightAmount+' on big 8') )
-				$scope.bigEightAmount = 0
+				$scope.bigEightAmount = ''
 			}
 		}
 	}
@@ -941,10 +1017,10 @@ function Dcome4(){
 			if($scope.total === 4){
 				$scope.buy4Winings = $scope.buy4Amount*4
 				$scope.outCome.push( ('Won '+$scope.buy4Amount*3+' on buy 4'))
-				$scope.buy4Amount = 0
+				$scope.buy4Amount = ''
 			} else if($scope.total === 7){
 				$scope.outCome.push( ('Lost '+$scope.buy4Amount+' on buy 4'))
-				$scope.buy4Amount = 0
+				$scope.buy4Amount = ''
 			}
 		}
 	}
@@ -953,10 +1029,10 @@ function Dcome4(){
 			if($scope.total === 5){
 				$scope.buy5Winings = $scope.buy5Amount*2
 				$scope.outCome.push( ('Won '+$scope.buy5Amount*3+' on buy 5'))
-				$scope.buy5Amount = 0
+				$scope.buy5Amount = ''
 			} else if($scope.total === 7){
 				$scope.outCome.push( ('Lost '+$scope.buy5Amount+' on buy 5'))
-				$scope.buy5Amount = 0
+				$scope.buy5Amount = ''
 			} 
 		}
 	}
@@ -965,10 +1041,10 @@ function Dcome4(){
 			if($scope.total === 6){
 				$scope.buy6Winings = $scope.buy6Amount*2
 				$scope.outCome.push( ('Won '+$scope.buy6Amount+' on buy 6'))
-				$scope.buy6Amount = 0
+				$scope.buy6Amount = ''
 			} else if($scope.total === 7){
 				$scope.outCome.push( ('Lost '+$scope.buy6Amount+' on buy 6'))
-				$scope.buy6Amount = 0
+				$scope.buy6Amount = ''
 			} 
 		}
 	}
@@ -977,10 +1053,10 @@ function Dcome4(){
 			if($scope.total === 8){
 				$scope.buy8Winings = $scope.buy8Amount*2
 				$scope.outCome.push( ('Won '+$scope.buy8Amount+' on buy 8'))
-				$scope.buy8Amount = 0
+				$scope.buy8Amount = ''
 			} else if($scope.total === 7){
 				$scope.outCome.push( ('Lost '+$scope.buy8Amount+' on buy 8'))
-				$scope.buy8Amount = 0
+				$scope.buy8Amount = ''
 			} 
 		}
 	}
@@ -989,10 +1065,10 @@ function Dcome4(){
 			if($scope.total === 9){
 				$scope.buy9Winings = $scope.buy9Amount*3
 				$scope.outCome.push( ('Won '+$scope.buy9Amount*3+' on buy 9'))
-				$scope.buy9Amount = 0
+				$scope.buy9Amount = ''
 			} else if($scope.total === 7){
 				$scope.outCome.push( ('Lost '+$scope.buy9Amount+' on buy 9'))
-				$scope.buy9Amount = 0
+				$scope.buy9Amount = ''
 			} 
 		}
 	}
@@ -1001,15 +1077,15 @@ function Dcome4(){
 			if($scope.total === 10){
 				$scope.buy10Winings = $scope.buy10Amount*4
 				$scope.outCome.push( ('Won '+$scope.buy10Amount*3+' on buy 10'))
-				$scope.buy10Amount = 0
+				$scope.buy10Amount = ''
 			} else if($scope.total === 7){
 				$scope.outCome.push( ('Lost '+$scope.buy10Amount+' on buy 10'))
-				$scope.buy10Amount = 0
+				$scope.buy10Amount = ''
 			} 
 		}
 	}
 	function addWinings() {
-		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings+$scope.comeNumWinings+$scope.comeWinings+$scope.DcomeNumWinings+$scope.dontComeWinings+$scope.buy4Winings+$scope.buy5Winings+$scope.buy6Winings+$scope.buy8Winings+$scope.buy9Winings+$scope.buy10Winings
+		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings+$scope.comeNumWinings+$scope.comeWinings+$scope.DcomeNumWinings+$scope.dontComeWinings+$scope.buy4Winings+$scope.buy5Winings+$scope.buy6Winings+$scope.buy8Winings+$scope.buy9Winings+$scope.buy10Winings+$scope.oddsPassWinings
 		$scope.playerTotal += $scope.totalWinings
 		$scope.totalWinings = 0
 		$scope.Fwinings = 0
@@ -1037,6 +1113,7 @@ function Dcome4(){
 		$scope.buy8Winings = 0
 		$scope.buy9Winings = 0
 		$scope.buy10Winings = 0
+		$scope.oddsPassWinings = 0
 	}
 	function point(){
 		if($scope.point < 1){
