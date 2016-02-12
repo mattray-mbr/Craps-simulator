@@ -9,10 +9,10 @@
 	<script src="main.js"></script>
 <body ng-controller="mainController">
 	<div class="all-container">
-		<h1 class="text-center">Casino Craps Sim</h1>
-		<div class="row">
-			<div class="lightbox"></div>
-		</div>
+		<h1 class="text-center title">Casino Craps Simulator</h1>
+		<!-- <div class="row">
+			<div class="lightbox col-xs-10 col-xs-offset-1"><button class="intro-btn">Play Now</button><img src="images/intro.jpg" class="img-responsive"></div>
+		</div> -->
 	<div class="container overall-container">
 		<div class="row">
 			<div class="col-xs-3 square placeA"><h2 class="point-set">Point Set on: <span class=point-value>{{point}}</span></h2></div>
@@ -91,7 +91,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div id="p-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
-						<button id="passv" class="col-xs-4 square placeD" ng-disabled="comeout" ng-click="click($event); passVertClick = true" ng-class="valid">
+						<button id="passv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="click($event); passVertClick = true" ng-class="valid">
 							<form ng-submit="passForm($event)">
 								<input type="text" ng-show="passVertClick" ng-model="passAmount" ng-blur="passVertClick = false">
 							</form>
@@ -246,19 +246,20 @@
 	</div>
 	<div class=" container-fluid"> <!-- HUD -->
 	<div class="roll-area row">
-		<div class="ui money col-xs-12 col-md-4">
-			<h3>Player Total: {{playerTotal | currency}}</h3>
-			<h3>Total bet: {{playerBet | currency}}</h3>
-			<h3>last Winings: {{totalWinings | currency}}</h3>
+		<div class="ui col-xs-12 col-md-4">
+			<h3>Player Total: <span class="money">{{playerTotal | currency}}</span></h3>
+			<h3>last Winings: <span class="money">{{totalWinings | currency}}</span></h3>
+                    <h3>House Cut: <span class="money">{{truePayout | currency}}</span></h3>
 		</div>
 		<div class="ui dice col-xs-12 col-md-4">
+                   <h3 class="outcome-log">Dice Rolls</h3>
 			<h4 class="pull-left"><div ng-class="dieSelect" class="dicePic"></div></h4>
 			<h4 class="pull-left"><div ng-class="dieSelect2" class="dicePic"></div></h4>
-			<h4 class="pull-left">{{total}}</h4>
+			<h3 class="pull-left dice-total">Total = {{total}}</h4>
 			<button class="roll btn btn-danger btn-lg" ng-click="diceRoll()">Roll Dice</button>
 		</div>
 		<div class="ui other col-xs-12 col-md-4">
-			<h3>Outcome log</h3>
+			<h3 class="outcome-log">Outcome log</h3>
 			<ul >
 				<li ng-repeat="item in outCome">{{item}}</li>
 			</ul>
