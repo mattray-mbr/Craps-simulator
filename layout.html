@@ -10,6 +10,9 @@
 <body ng-controller="mainController">
 	<div class="all-container">
 		<h1 class="text-center">Casino Craps Sim</h1>
+		<div class="row">
+			<div class="lightbox"></div>
+		</div>
 	<div class="container overall-container">
 		<div class="row">
 			<div class="col-xs-3 square placeA"><h2 class="point-set">Point Set on: <span class=point-value>{{point}}</span></h2></div>
@@ -88,12 +91,16 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div id="p-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
-						<button id="passv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="click($event); passVertClick = true" ng-class="valid">
+						<button id="passv" class="col-xs-4 square placeD" ng-disabled="comeout" ng-click="click($event); passVertClick = true" ng-class="valid">
 							<form ng-submit="passForm($event)">
 								<input type="text" ng-show="passVertClick" ng-model="passAmount" ng-blur="passVertClick = false">
 							</form>
 						</button>
-						<div id="d-odds-vert" class="col-xs-2 square placeD" ng-disabled="comeout" ng-class="invalid"></div>
+						<button id="d-odds-vert" class="col-xs-2 square placeD" ng-click="click($event); oddsDpassClick = true" ng-disabled="comeout" ng-class="invalid">
+							<form ng-submit="oddsDpassForm($event)">
+								<input type="text" ng-show="oddsDpassClick" ng-model="oddsDontPassAmount" ng-blur="oddsDpassClick = false">
+							</form>
+						</button>
 						<button id="dpv" class="col-xs-4 square placeD" ng-disabled="pointSet" ng-click="click($event); dontpassVertClick = true" ng-class="valid">
 							<form ng-submit="dontPassForm($event)">
 								<input type="text" ng-show="dontpassVertClick" ng-model="dontPassAmount" ng-blur="dontpassVertClick = false">
@@ -144,7 +151,12 @@
 						</button>
 					</div>
 					<div class="row">
-						<div id="oddsDP" class="col-xs-12 square placeG" ng-class="invalid" ng-disabled="comeout"></div>
+						<button id="oddsDP" class="col-xs-12 square placeG" ng-class="invalid" ng-disabled="comeout" ng-click="click($event); oddsDpassClick = true">
+							<form ng-submit="oddsDpassForm($event)">
+								<input type="text" ng-show="oddsDpassClick" ng-model="oddsDontPassAmount" ng-blur="oddsDpassClick = false">
+							</form>
+							<div class="circle odds-circle" ng-show="showChipDontPassOdds">{{oddsDontPassAmount}}</div>
+						</button>
 					</div>
 					<div class="row">
 						<button id="passh" class="col-xs-12 square placeF" ng-click="click($event); passClick = true" ng-disabled="pointSet" ng-class="valid">

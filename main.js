@@ -51,6 +51,7 @@ var app = angular.module('myApp', [])
 	$scope.comeWinings = 0
 	$scope.dontComeWinings = 0
 	$scope.oddsPassWinings = 0
+	$scope.oddsDontPassWinings = 0
 	$scope.totalWinings
 	$scope.valid = "valid"
  	$scope.invalid = "invalid"
@@ -83,7 +84,6 @@ var app = angular.module('myApp', [])
 		//rolls
 		diceImg1()
 		diceImg2()
-		dontPassLineRoll()
 		field()
 		anyseven()
 		anycraps()
@@ -98,6 +98,8 @@ var app = angular.module('myApp', [])
 		bigSix()
 		bigEight()
 		oddsPass()
+		oddsDontPass()
+		dontPassLineRoll()
 		passLineRoll()
 		Dcome4()
 		Dcome5()
@@ -204,6 +206,9 @@ var app = angular.module('myApp', [])
 		}
 		if($scope.oddsPassAmount < 1){
 			$scope.showChipPassOdds = false
+		}
+		if($scope.oddsDontPassAmount < 1){
+			$scope.showChipDontPassOdds = false
 		}
 		$scope.showChipC = false
 		$scope.showChipDC = false
@@ -416,6 +421,14 @@ var app = angular.module('myApp', [])
 			event.target.children[0].blur();
 		})
 	}
+	$scope.oddsDpassForm = function(event){
+		$scope.playerTotal -= $scope.oddsDontPassAmount
+		$scope.showChipDontPassOdds = true
+		$timeout(function(){
+			event.stopPropagation()
+			event.target.children[0].blur();
+		})
+	}
 //--------------- calc odds and payout functions -------------------
 	function diceImg1(){
 		switch($scope.die1){
@@ -508,14 +521,14 @@ var app = angular.module('myApp', [])
 				$scope.outCome.push( ('Won '+$scope.dontPassAmount+' on dont pass line') )
 				$scope.dontPassAmount = ''
 			} else if($scope.total === 12){
+				$scope.DPwinings = $scope.dontPassAmount*1
 				$scope.outCome.push( ('Push dont pass on 12') )
-				$scope.DPwinings = $scope.dontPassAmount
 				console.log($scope.DPwinings)
 				console.log($scope.dontPassAmount)
 				$scope.dontPassAmount = ''
 			} else if($scope.total === 7 || $scope.total === 11){
 				$scope.DPwinings = 0
-				$scope.outCome.push( ('Lost '+$scope.dontPassAmount+' on dont pass line') )
+				$scope.outCome.push( ('Lost '+$scope.dontPassAmount+' on dont pass') )
 				$scope.dontPassAmount = ''
 			} else {
 				console.log('point established, dont pass bet stays')
@@ -528,6 +541,18 @@ var app = angular.module('myApp', [])
 			} else if($scope.total === $scope.point){
 				$scope.outCome.push( ('Lost '+$scope.dontPassAmount+' on dont pass') )
 				$scope.dontPassAmount = ''
+			}
+		}
+	}
+	function oddsDontPass(){
+		if($scope.oddsDontPassAmount > 0){
+			if($scope.total === $scope.point){
+				$scope.outCome.push( ('Lost '+$scope.oddsDontPassAmount+' on dont pass odds'))
+				$scope.oddsDontPassAmount = ''
+			} else if($scope.total === 7){
+				$scope.oddsDontPassWinings = $scope.oddsDontPassAmount*2
+				$scope.outCome.push( ('Won '+$scope.oddsDontPassAmount+' on dont pass odds'))
+				$scope.oddsDontPassAmount = ''
 			}
 		}
 	}
@@ -1085,7 +1110,7 @@ function Dcome4(){
 		}
 	}
 	function addWinings() {
-		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings+$scope.comeNumWinings+$scope.comeWinings+$scope.DcomeNumWinings+$scope.dontComeWinings+$scope.buy4Winings+$scope.buy5Winings+$scope.buy6Winings+$scope.buy8Winings+$scope.buy9Winings+$scope.buy10Winings+$scope.oddsPassWinings
+		$scope.totalWinings = $scope.Fwinings+$scope.Pwinings+$scope.DPwinings+$scope.sevenWinings+$scope.crapsWinings+$scope.h4winings+$scope.h6winings+$scope.h8winings+$scope.h10winings+$scope.threeWinings+$scope.yoWinings+$scope.twoWinings+$scope.twelveWinings+$scope.BEightWinings+$scope.BsixWinings+$scope.comeNumWinings+$scope.comeWinings+$scope.DcomeNumWinings+$scope.dontComeWinings+$scope.buy4Winings+$scope.buy5Winings+$scope.buy6Winings+$scope.buy8Winings+$scope.buy9Winings+$scope.buy10Winings+$scope.oddsPassWinings+$scope.oddsDontPassWinings
 		$scope.playerTotal += $scope.totalWinings
 		$scope.totalWinings = 0
 		$scope.Fwinings = 0
@@ -1114,6 +1139,7 @@ function Dcome4(){
 		$scope.buy9Winings = 0
 		$scope.buy10Winings = 0
 		$scope.oddsPassWinings = 0
+		$scope.oddsDontPassWinings = 0
 	}
 	function point(){
 		if($scope.point < 1){
